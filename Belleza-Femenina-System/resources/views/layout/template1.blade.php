@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi tienda</title>
+    <title>@yield('title', 'Mi Tienda')</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ url('/css/template1.css') }}" rel="stylesheet">
+
+     @yield('estilos_css')
 </head>
 <body>
     <!-- Navbar Elegante -->
     <nav class="navbar navbar-expand-lg customNavbar sticky-top">
         <div class="container">
-            <a class="navbar-brand navBrand" href="#">
+            <a class="navbar-brand navBrand" href="/">
                 <i class="me-2"></i>Mi Tienda
             </a>
             
@@ -50,7 +52,7 @@
     <main class="mainContent">      
             <!-- Espacio para tu contenido -->
             <div class="text-center py-5">
-                Donde va air todo
+                @yield('content')
             </div>
         </div>
     </main>
@@ -80,11 +82,9 @@
                 
                 <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
                     <h5 class="footerTitle">Ayuda</h5>
-                    <a href="#" class="footerLink">Contacto</a>
-                    <a href="#" class="footerLink">Envíos</a>
-                    <a href="#" class="footerLink">Devoluciones</a>
-                    <a href="#" class="footerLink">Preguntas</a>
-                    <a href="#" class="footerLink">Guía de tallas</a>
+                    <a href="{{url('sobre_nosotros')}}" class="footerLink">Sobre Nosotros</a>
+                    <a href="{{url('preguntas_frecuentes')}}" class="footerLink">Preguntas Frecuentes</a>
+                    <a href="{{url('guia_tallas')}}" class="footerLink">Guía de tallas</a>
                 </div>
                 
                 <div class="col-md-6 col-lg-4">

@@ -1,0 +1,76 @@
+.faq-section {
+    background-color: #fdf6f9;
+    padding: 4rem 2rem;
+    color: #333;
+}
+
+.section-title {
+    color: #912f5d;
+    font-weight: bold;
+    
+    font-size: 2rem;
+}
+
+.accordion-button {
+    background-color: #fff0f5;
+    font-weight: bold;
+    color: #912f5d;
+    border: none;
+    box-shadow: none;
+    padding: 1rem 1.25rem;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #fce6ef;
+    color: #7a274d;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+}
+
+.accordion-item {
+    border: 1px solid #f0cadd;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-body {
+    background-color: #fff;
+    padding: 1.25rem;
+    font-size: 1rem;
+    color: #444;
+}
+
+.btn-purple {
+    background-color: #912f5d;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-purple:hover {
+    background-color: #7a274d;
+    color: #fff;
+}
+
+.text-center h4.section-title {
+    font-size: 1.5rem;
+   
+}
+
+@media (max-width: 576px) {
+    .faq-section {
+        padding: 2rem 1rem;
+    }
+
+    .accordion-button {
+        font-size: 1rem;
+    }
+
+    .btn-purple {
+        width: 100%;
+    }
+}

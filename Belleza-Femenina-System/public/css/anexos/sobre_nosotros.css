@@ -1,0 +1,30 @@
+.bg-purple {
+    background-color: #912f5d;
+    color: white;
+}
+.about-section {
+    background-color: #fdf6f9;
+    padding: 4rem 2rem;
+}
+.about-img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 2rem;
+    box-shadow: 0 0 20px rgba(145, 47, 93, 0.2);
+    display: block;
+    margin: auto;
+}
+.section-title {
+    color: #912f5d;
+    font-weight: bold;
+}
+.text-muted {
+    font-size: 1.05rem;
+}
+.mission-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 15px rgba(145, 47, 93, 0.1);
+    margin-bottom: 2rem;
+}
