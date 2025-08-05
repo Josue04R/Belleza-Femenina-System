@@ -1,248 +1,248 @@
 :root {
-            --colorPrimary: #f89fa1;   /* Rosado fuerte */
-            --colorSecondary: #fabdbd; /* Rosado medio */
-            --colorAccent: #fad6d6;    /* Rosado claro */
-            --colorLight: #fefcd0;     /* Amarillo claro */
-            --colorBackground: #94654c; /* Café suave */
-        }
+    --colorPrimary: #f89fa1;   /* Rosado fuerte */
+    --colorSecondary: #fabdbd; /* Rosado medio */
+    --colorAccent: #fad6d6;    /* Rosado claro */
+    --colorLight: #fefcd0;     /* Amarillo claro */
+    --colorBackground: #94654c; /* Café suave */
+}
 
-        
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .customNavbar {
-            background-color: var(--colorPrimary);
-            padding: 0.8rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        
-        .navBrand {
-            color: white !important;
-            font-weight: 700;
-            font-size: 1.8rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-        
-        .navBrand:hover {
-            color: var(--colorLight) !important;
-            transform: scale(1.02);
-        }
-        
-        .searchContainer {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .searchInput {
-            border-radius: 30px;
-            border: 2px solid var(--colorLight);
-            padding: 0.6rem 1.5rem 0.6rem 3rem;
-            width: 100%;
-            transition: all 0.3s ease;
-            background-color: rgba(255,255,255,0.9);
-        }
-        
-        .searchInput:focus {
-            border-color: var(--colorSecondary);
-            box-shadow: 0 0 0 0.25rem rgba(248, 159, 161, 0.2);
-        }
-        
-        .searchIcon {
-            position: absolute;
-            left: 1.2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--colorPrimary);
-        }
-        
-        .navLink {
-            color: white !important;
-            margin: 0 0.3rem;
-            padding: 0.7rem 1.3rem !important;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            position: relative;
-        }
-        
-        .navLink:hover {
-            background-color: var(--colorSecondary);
-            transform: translateY(-2px);
-        }
-        
-        .navLink.active {
-            background-color: var(--colorAccent);
-        }
-        
-        .dropdownMenu {
-            background-color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 0.5rem 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            margin-top: 0.5rem;
-        }
-        
-        .dropdownItem {
-            color: var(--colorPrimary) !important;
-            padding: 0.6rem 1.5rem;
-            transition: all 0.2s ease;
-            font-weight: 500;
-        }
-        
-        .dropdownItem:hover {
-            background-color: var(--colorLight);
-            color: var(--colorPrimary) !important;
-            padding-left: 1.8rem;
-        }
-        
-        .dropdownDivider {
-            border-color: var(--colorLight);
-            opacity: 0.7;
-            margin: 0.5rem 0;
-        }
-        
-        .userDropdown {
-            color: white;
-        }
-        
-        .cartIcon {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .cartIcon:hover {
-            transform: scale(1.1);
-        }
-        
-        .cartBadge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--colorSecondary);
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .mainContent {
-            min-height: calc(100vh - 120px);
-            background-color: white;
-            padding: 3rem 0;
-        }
-        
-        .heroSection {
-            background: linear-gradient(135deg, var(--colorLight), var(--colorBackground));
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        
-        .customFooter {
-            background: linear-gradient(to right, var(--colorPrimary));
-            color: white;
-            padding: 3rem 0 1.5rem;
-        }
-        
-        .footerTitle {
-            color: var(--colorLight);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 0.8rem;
-        }
-        
-        .footerTitle::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--colorAccent);
-        }
-        
-        .footerLink {
-            color: var(--colorLight);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.8rem;
-            transition: all 0.3s ease;
-            font-weight: 400;
-        }
-        
-        .footerLink:hover {
-            color: white;
-            transform: translateX(8px);
-        }
-        
-        .socialIcon {
-            color: var(--colorLight);
-            font-size: 1.5rem;
-            margin-right: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .socialIcon:hover {
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .newsletterInput {
-            border-radius: 30px 0 0 30px;
-            border: none;
-            padding: 0.7rem 1.5rem;
-        }
-        
-        .newsletterBtn {
-            background-color: var(--colorSecondary);
-            color: white;
-            font-weight: 600;
-            border-radius: 0 30px 30px 0;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            transition: all 0.3s ease;
-        }
-        
-        .newsletterBtn:hover {
-            background-color: var(--colorAccent);
-            transform: translateY(-2px);
-        }
-        
-        .copyrightText {
-            color: var(--colorLight);
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 992px) {
-            .searchContainer {
-                order: 3;
-                width: 100%;
-                margin: 1rem 0;
-            }
-            
-            .navbar-collapse {
-                padding-top: 1rem;
-            }
-            
-            .navLink {
-                margin: 0.3rem 0;
-                text-align: center;
-            }
-            
-            .heroSection {
-                padding: 2.5rem 1.5rem;
-            }
-        }
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.customNavbar {
+    background-color: var(--colorPrimary);
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.navBrand {
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.navBrand:hover {
+    color: var(--colorLight) !important;
+    transform: scale(1.02);
+}
+
+.searchContainer {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.searchInput {
+    border-radius: 30px;
+    border: 2px solid var(--colorLight);
+    padding: 0.6rem 1.5rem 0.6rem 3rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    background-color: rgba(255,255,255,0.9);
+}
+
+.searchInput:focus {
+    border-color: var(--colorSecondary);
+    box-shadow: 0 0 0 0.25rem rgba(248, 159, 161, 0.2);
+}
+
+.searchIcon {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--colorPrimary);
+}
+
+.navLink {
+    color: white !important;
+    margin: 0 0.3rem;
+    padding: 0.7rem 1.3rem !important;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.navLink:hover {
+    background-color: var(--colorSecondary);
+    transform: translateY(-2px);
+}
+
+.navLink.active {
+    background-color: var(--colorAccent);
+}
+
+.dropdownMenu {
+    background-color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    margin-top: 0.5rem;
+}
+
+.dropdownItem {
+    color: var(--colorPrimary) !important;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.dropdownItem:hover {
+    background-color: var(--colorLight);
+    color: var(--colorPrimary) !important;
+    padding-left: 1.8rem;
+}
+
+.dropdownDivider {
+    border-color: var(--colorLight);
+    opacity: 0.7;
+    margin: 0.5rem 0;
+}
+
+.userDropdown {
+    color: white;
+}
+
+.cartIcon {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.cartIcon:hover {
+    transform: scale(1.1);
+}
+
+.cartBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--colorSecondary);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.mainContent {
+    min-height: calc(100vh - 120px);
+    background-color: white;
+    padding: 3rem 0;
+}
+
+.heroSection {
+    background: linear-gradient(135deg, var(--colorLight), var(--colorBackground));
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.customFooter {
+    background: linear-gradient(to right, var(--colorPrimary));
+    color: white;
+    padding: 3rem 0 1.5rem;
+}
+
+.footerTitle {
+    color: var(--colorLight);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.footerTitle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--colorAccent);
+}
+
+.footerLink {
+    color: var(--colorLight);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+.footerLink:hover {
+    color: white;
+    transform: translateX(8px);
+}
+
+.socialIcon {
+    color: var(--colorLight);
+    font-size: 1.5rem;
+    margin-right: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+.newsletterInput {
+    border-radius: 30px 0 0 30px;
+    border: none;
+    padding: 0.7rem 1.5rem;
+}
+
+.newsletterBtn {
+    background-color: var(--colorSecondary);
+    color: white;
+    font-weight: 600;
+    border-radius: 0 30px 30px 0;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.newsletterBtn:hover {
+    background-color: var(--colorAccent);
+    transform: translateY(-2px);
+}
+
+.copyrightText {
+    color: var(--colorLight);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+    .searchContainer {
+        order: 3;
+        width: 100%;
+        margin: 1rem 0;
+    }
+    
+    .navbar-collapse {
+        padding-top: 1rem;
+    }
+    
+    .navLink {
+        margin: 0.3rem 0;
+        text-align: center;
+    }
+    
+    .heroSection {
+        padding: 2.5rem 1.5rem;
+    }
+}
