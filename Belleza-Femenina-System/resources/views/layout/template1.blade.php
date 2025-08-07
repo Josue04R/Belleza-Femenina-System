@@ -51,9 +51,8 @@
     <!-- Contenido principal -->
     <main class="mainContent">      
             <!-- Espacio para tu contenido -->
-            <div class="text-center py-5">
+        <div class="text-center py-5">
                 @yield('content')
-            </div>
         </div>
     </main>
     

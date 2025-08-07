@@ -16,6 +16,7 @@ body {
     background-color: var(--colorPrimary);
     padding: 0.8rem 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 0;
 }
 
 .navBrand {
@@ -139,7 +140,7 @@ body {
 .mainContent {
     min-height: calc(100vh - 120px);
     background-color: white;
-    padding: 3rem 0;
+    padding: 0;
 }
 
 .heroSection {
