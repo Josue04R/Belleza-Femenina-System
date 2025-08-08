@@ -1,0 +1,293 @@
+:root {
+    --primaryColor: #f89fa1;         /* Rosa neón vibrante */
+    --secondaryColor: #FF7E9D;       /* Rosa claro */
+    --darkColor: #1A1A2E;            /* Azul oscuro para contrastes */
+    --lightAccent: #FFD6E7;          /* Rosa pastel */
+    --veryLightAccent: #FFF5F9;      /* Fondo rosado claro */
+    --highlight: #FFFFFF;            /* Blanco puro */
+    --textColor: #333333;            /* Gris oscuro */
+    --textLight: #777777;           /* Gris medio */
+}
+
+.bgPrimaryCustom {
+    background: linear-gradient(135deg, var(--primaryColor), var(--secondaryColor)) !important;
+    color: white !important;
+}
+
+.bgSecondaryCustom {
+    background-color: var(--highlight) !important;
+    color: var(--textColor) !important;
+}
+
+.bgLightAccent {
+    background-color: var(--lightAccent) !important;
+}
+
+.bgVeryLightAccent {
+    background-color: var(--veryLightAccent) !important;
+}
+
+.bgHighlight {
+    background-color: var(--highlight) !important;
+}
+
+.textPrimaryCustom {
+    color: var(--primaryColor) !important;
+}
+
+.btnPrimaryCustom {
+    background: linear-gradient(135deg, var(--primaryColor), var(--secondaryColor));
+    border: none;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 62, 108, 0.3);
+}
+
+.btnPrimaryCustom:hover {
+    background: linear-gradient(135deg, #E2335D, #FF6B8B);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 62, 108, 0.4);
+}
+
+.btnOutlinePrimaryCustom {
+    color: var(--primaryColor);
+    border-color: var(--primaryColor);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btnOutlinePrimaryCustom:hover {
+    background-color: var(--primaryColor);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 62, 108, 0.2);
+}
+
+.borderPrimaryCustom {
+    border-color: var(--lightAccent) !important;
+}
+
+.badgeCustom {
+    background-color: var(--lightAccent);
+    color: var(--primaryColor);
+    font-weight: 500;
+}
+
+.productCardTitle a {
+    color: var(--darkColor);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.productCardTitle a:hover {
+    color: var(--primaryColor);
+}
+
+.main-container {
+    background-color: var(--highlight);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow: hidden;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+}
+
+.cart-header {
+    background: linear-gradient(135deg, var(--primaryColor), var(--secondaryColor));
+    color: white;
+    padding: 1.5rem;
+    border-radius: 20px 20px 0 0;
+}
+
+.cart-item {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.cart-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 62, 108, 0.15);
+}
+
+.cart-item-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.cart-item-img:hover {
+    transform: scale(1.05);
+}
+
+.quantity-input {
+    width: 70px;
+    text-align: center;
+    border: 2px solid var(--lightAccent);
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.quantity-input:focus {
+    border-color: var(--primaryColor);
+    box-shadow: 0 0 0 0.25rem rgba(255, 62, 108, 0.25);
+}
+
+.btn-action {
+    border-radius: 10px !important;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.summary-card {
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.summary-header {
+    background-color: var(--highlight);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--lightAccent);
+}
+
+.total-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primaryColor);
+    margin: 1rem 0;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--lightAccent);
+    color: var(--primaryColor);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--lightAccent);
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--lightAccent);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primaryColor);
+    box-shadow: 0 0 0 0.25rem rgba(255, 62, 108, 0.25);
+}
+
+.note-textarea {
+    min-height: 100px;
+    resize: none;
+}
+
+.promo-input-group .btn {
+    border-radius: 0 10px 10px 0 !important;
+}
+
+.promo-input-group .form-control {
+    border-radius: 10px 0 0 10px !important;
+}
+
+.shipping-btn {
+    border-radius: 10px !important;
+}
+
+.text-muted {
+    color: var(--textLight) !important;
+}
+
+.price-text {
+    font-weight: 600;
+    color: var(--primaryColor);
+}
+
+/* Animaciones y efectos */
+.pulse-effect {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 62, 108, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 62, 108, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 62, 108, 0);
+    }
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .cart-item-img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .cart-item-body {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    
+    .cart-item-img {
+        margin-bottom: 1rem;
+        margin-right: 0 !important;
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+    
+    .action-buttons {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .quantity-input {
+        margin-bottom: 0.5rem;
+    }
+    
+    .total-price {
+        font-size: 2rem;
+    }
+}
+
+/* Efecto de carga para imágenes */
+.img-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}

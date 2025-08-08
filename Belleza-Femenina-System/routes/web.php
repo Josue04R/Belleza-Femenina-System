@@ -19,3 +19,6 @@ Route::controller(AnexosController::class)->group(function () {
     Route::get('/sobre_nosotros', 'sobre_nosotros')->name('sobre_nosotros');
 });
 
+Route::get('/carrito', function () {
+    return view('carrito.carrito');
+})->name('carrito');
