@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+
     // Animación de las imágenes cuando se cargan
     const images = document.querySelectorAll('.cart-item-img');
     images.forEach(img => {
@@ -46,4 +47,5 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     });
+    
 });

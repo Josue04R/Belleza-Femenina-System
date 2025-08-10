@@ -1,24 +1,43 @@
 <?php
 
 use App\Http\Controllers\AnexosController;
+use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\ProductoController;
+use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
 
-//Agregados solo para ver nomas ---inicio
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Aquí se definen las rutas web de la aplicación.
+|
+*/
+
+// Ruta principal - muestra todos los productos
 Route::get('/', function () {
-    return view('home.home');
-});
+    $productos = Producto::all();
+    return view('home.home', compact('productos'));
+})->name('home');
 
-Route::get('/login', function () {
-    return view('login.login');
-});
-///final
+// Ruta para login
+Route::view('/login', 'login.login')->name('login');
 
+// Rutas del controlador Anexos agrupadas
 Route::controller(AnexosController::class)->group(function () {
-    Route::get('/guia_tallas', 'guia_tallas')->name('guia_tallas');
-    Route::get('/preguntas_frecuentes', 'preguntas_frecuentes')->name('preguntas_frecuentes');
-    Route::get('/sobre_nosotros', 'sobre_nosotros')->name('sobre_nosotros');
+    Route::get('/guia-tallas', 'guia_tallas')->name('guia_tallas');
+    Route::get('/preguntas-frecuentes', 'preguntas_frecuentes')->name('preguntas_frecuentes');
+    Route::get('/sobre-nosotros', 'sobre_nosotros')->name('sobre_nosotros');
 });
 
-Route::get('/carrito', function () {
-    return view('carrito.carrito');
-})->name('carrito');
+// Rutas relacionadas al carrito de compras
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+Route::get('/producto/{id}', [ProductoController::class, 'show'])->name('productos.show');
+Route::post('/carrito/eliminar/{id_variante}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+Route::get('/carrito/editar/{id_variante}', [CarritoController::class, 'editar'])->name('producto.editar');
+Route::post('/carrito/actualizar/{id_variante}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
+
+// Ruta para mostrar producto individual
+Route::get('/producto/{id}', [ProductoController::class, 'show'])->name('productos.show');

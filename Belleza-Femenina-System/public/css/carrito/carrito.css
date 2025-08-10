@@ -1,3 +1,6 @@
+/* ========================
+   Variables globales de color
+======================== */
 :root {
     --primaryColor: #f89fa1;         /* Rosa neón vibrante */
     --secondaryColor: #FF7E9D;       /* Rosa claro */
@@ -6,9 +9,12 @@
     --veryLightAccent: #FFF5F9;      /* Fondo rosado claro */
     --highlight: #FFFFFF;            /* Blanco puro */
     --textColor: #333333;            /* Gris oscuro */
-    --textLight: #777777;           /* Gris medio */
+    --textLight: #777777;            /* Gris medio */
 }
 
+/* ========================
+   Fondos personalizados
+======================== */
 .bgPrimaryCustom {
     background: linear-gradient(135deg, var(--primaryColor), var(--secondaryColor)) !important;
     color: white !important;
@@ -31,10 +37,16 @@
     background-color: var(--highlight) !important;
 }
 
+/* ========================
+   Texto personalizado
+======================== */
 .textPrimaryCustom {
     color: var(--primaryColor) !important;
 }
 
+/* ========================
+   Botones personalizados
+======================== */
 .btnPrimaryCustom {
     background: linear-gradient(135deg, var(--primaryColor), var(--secondaryColor));
     border: none;
@@ -64,6 +76,9 @@
     box-shadow: 0 4px 15px rgba(255, 62, 108, 0.2);
 }
 
+/* ========================
+   Bordes y badges
+======================== */
 .borderPrimaryCustom {
     border-color: var(--lightAccent) !important;
 }
@@ -74,6 +89,9 @@
     font-weight: 500;
 }
 
+/* ========================
+   Tarjetas y títulos de productos
+======================== */
 .productCardTitle a {
     color: var(--darkColor);
     text-decoration: none;
@@ -85,6 +103,9 @@
     color: var(--primaryColor);
 }
 
+/* ========================
+   Contenedor principal y estructura del carrito
+======================== */
 .main-container {
     background-color: var(--highlight);
     border-radius: 20px;
@@ -127,6 +148,9 @@
     transform: scale(1.05);
 }
 
+/* ========================
+   Inputs y controles de cantidad
+======================== */
 .quantity-input {
     width: 70px;
     text-align: center;
@@ -146,6 +170,9 @@
     font-size: 0.875rem;
 }
 
+/* ========================
+   Tarjetas resumen
+======================== */
 .summary-card {
     border-radius: 20px;
     border: none;
@@ -166,6 +193,9 @@
     margin: 1rem 0;
 }
 
+/* ========================
+   Estilos para acordeones
+======================== */
 .accordion-button:not(.collapsed) {
     background-color: var(--lightAccent);
     color: var(--primaryColor);
@@ -176,6 +206,9 @@
     border-color: var(--lightAccent);
 }
 
+/* ========================
+   Formularios
+======================== */
 .form-control, .form-select {
     border-radius: 10px;
     padding: 0.75rem 1rem;
@@ -192,6 +225,9 @@
     resize: none;
 }
 
+/* ========================
+   Grupo de promo y botones de envío
+======================== */
 .promo-input-group .btn {
     border-radius: 0 10px 10px 0 !important;
 }
@@ -204,6 +240,9 @@
     border-radius: 10px !important;
 }
 
+/* ========================
+   Textos y colores de ayuda
+======================== */
 .text-muted {
     color: var(--textLight) !important;
 }
@@ -213,7 +252,9 @@
     color: var(--primaryColor);
 }
 
-/* Animaciones y efectos */
+/* ========================
+   Animaciones y efectos
+======================== */
 .pulse-effect {
     animation: pulse 2s infinite;
 }
@@ -240,7 +281,9 @@
     100% { transform: translateY(0px); }
 }
 
-/* Responsive */
+/* ========================
+   Responsive (adaptación a móviles y tablets)
+======================== */
 @media (max-width: 991.98px) {
     .cart-item-img {
         width: 100px;
@@ -276,7 +319,9 @@
     }
 }
 
-/* Efecto de carga para imágenes */
+/* ========================
+   Efecto de carga para imágenes
+======================== */
 .img-loading {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200% 100%;

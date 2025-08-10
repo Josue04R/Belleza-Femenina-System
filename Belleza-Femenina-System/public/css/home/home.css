@@ -1,587 +1,253 @@
-
+/* Paleta de colores principales para el sitio */
 :root {
-        --color-marron: #94654c;
-        --color-rosa-oscuro: #f89fa1;
-        --color-rosa-medio: #fabdbd;
-        --color-rosa-claro: #fad6d6;
-        --color-crema: #fefcd0;
-        --color-primario: var(--color-marron);
-        --color-secundario: var(--color-rosa-oscuro);
-        --color-terciario: var(--color-rosa-medio);
-        --color-fondo: #fff9fa;
-        --color-acento: var(--color-crema);
-        --color-texto: #5a4a3a;
-        --color-texto-claro: #7a6b5a;
-        --color-exito: #4CAF50;
-        --color-alerta: #FF9800;
-    }
-
-    /* Estructura general mejorada */
-    body {
-        font-family: 'Montserrat', sans-serif;
-        color: var(--color-texto);
-        background-color: var(--color-fondo);
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    /* Tipografía mejorada */
-    h1, h2, h3, h4, .section-title {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--color-primario);
-        margin-top: 0;
-    }
-
-
-
-    /* Hero Section con animaciones */
-   .hero-section {
-        position: relative;
-        height: 100vh; /* Cambia de 90vh a 100vh */
-        min-height: 650px;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        background: linear-gradient(rgba(148, 101, 76, 0.7), rgba(248, 159, 161, 0.6)), 
-                    url('{{ asset("/img/foto-belleza-femenina.jpg") }}') center/cover no-repeat;
-        animation: fadeIn 1.5s ease-in-out;
-        margin-top: -72px; /* Compensa la altura del navbar */
-        padding-top: 72px; /* Asegura que el contenido no quede detrás del navbar */
+    --color-primary: #94654c;        /* Marrón cálido */
+    --color-secondary: #f89fa1;      /* Rosa claro */
+    --color-light: #fad6d6;          /* Rosa pastel */
+    --color-bg: #fff9fa;             /* Fondo muy claro */
+    --color-text: #5a4a3a;           /* Texto marrón oscuro */
 }
 
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        color: white;
-        text-align: center;
-    }
+/* Estilos base del body y tipografía */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
 
-    .hero-title {
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
-        margin-bottom: 1.5rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        line-height: 1.2;
-        animation: slideInDown 1s ease-out;
-    }
+/* Tipografías para encabezados */
+h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', serif;
+}
 
-    .hero-subtitle {
-        font-size: clamp(1.2rem, 2vw, 1.5rem);
-        margin-bottom: 2.5rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-        font-weight: 500;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        animation: fadeIn 1.5s ease-in-out;
-    }
+/* Sección principal del héroe */
+.hero-section {
+    height: 90vh;
+    min-height: 700px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
 
-    .hero-buttons {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        animation: fadeInUp 1s ease-out;
-    }
+/* Overlay oscuro sobre la imagen del héroe para mejorar contraste */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0));
+}
 
-    /* Botones mejorados */
-    .btn {
-        display: inline-block;
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        border-radius: 50px;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-align: center;
-    }
+/* Tarjetas de categoría: estilo base y transición */
+.category-card {
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--color-text);
+}
 
-    .btn-primary {
-        background: linear-gradient(45deg, var(--color-crema), var(--color-rosa-medio));
-        color: var(--color-primario);
-        border: none;
-        box-shadow: 0 4px 15px rgba(250, 189, 189, 0.4);
-    }
+/* Efecto hover para levantar tarjeta */
+.category-card:hover {
+    transform: translateY(-5px);
+}
 
-    .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(250, 189, 189, 0.6);
-        background: linear-gradient(45deg, var(--color-rosa-medio), var(--color-crema));
-    }
+/* Contenedor para imagen de categoría */
+.category-img {
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
 
-    .btn-secondary {
-        background-color: transparent;
-        color: white;
-        border: 2px solid white;
-    }
+/* Imagen dentro de categoría, con ajuste para cubrir área */
+.category-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-    .btn-secondary:hover {
-        background-color: rgba(255,255,255,0.2);
-        transform: translateY(-3px);
-    }
+/* Zoom imagen en hover de tarjeta categoría */
+.category-card:hover .category-img img {
+    transform: scale(1.05);
+}
 
-    .btn-sm {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.95rem;
-    }
+/* Tarjetas de producto: fondo, sombra y bordes */
+.product-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+}
 
-    /* Secciones mejoradas */
-    .section {
-        padding: 5rem 0;
-        position: relative;
-    }
+/* Levantar tarjeta de producto y aumentar sombra en hover */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
 
-    .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
-        position: relative;
-        font-size: clamp(2rem, 4vw, 2.5rem);
-    }
+/* Contenedor para imagen del producto */
+.product-img {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
 
-    .section-title:after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 4px;
-        background: var(--color-secundario);
-        margin: 1rem auto 0;
-        border-radius: 2px;
-        transition: width 0.3s ease;
-    }
+/* Imagen de producto ajustada para cubrir área */
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
 
-    .section-title:hover:after {
-        width: 100px;
-    }
+/* Zoom imagen producto al hacer hover en la tarjeta */
+.product-card:hover .product-img img {
+    transform: scale(1.05);
+}
 
-    /* Tarjetas de Beneficios mejoradas */
-    .benefits-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
+/* Posición y estilo para badges en productos */
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+}
 
-    .benefit-card {
-        background: white;
-        border-radius: 16px;
-        padding: 2.5rem 2rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(248, 159, 161, 0.1);
-        border-top: 4px solid var(--color-terciario);
-        position: relative;
-        overflow: hidden;
-    }
+/* Badge nuevo con color primario */
+.badge-new {
+    background: var(--color-primary);
+    color: white;
+}
 
-    .benefit-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 35px rgba(248, 159, 161, 0.2);
-    }
+/* Badge de oferta/venta con color rojo */
+.badge-sale {
+    background: #dc3545;
+    color: white;
+}
 
-    .benefit-card:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: var(--color-terciario);
-        transition: height 0.3s ease;
-    }
+/* Contenedor para botones de acción sobre producto */
+.product-actions {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
 
-    .benefit-card:hover:after {
-        height: 8px;
-    }
+/* Mostrar botones de acción al hacer hover en producto */
+.product-card:hover .product-actions {
+    opacity: 1;
+}
 
-    .benefit-icon {
-        font-size: 2.5rem;
-        color: var(--color-primario);
-        margin-bottom: 1.5rem;
-        transition: transform 0.3s ease;
-    }
+/* Botones de acción: tamaño, color y transición */
+.action-btn {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: white;
+    color: var(--color-primary);
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    border: none;
+}
 
-    .benefit-card:hover .benefit-icon {
-        transform: scale(1.1);
-    }
+/* Cambio de color y movimiento en hover para botones de acción */
+.action-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-3px);
+}
 
-    .benefit-title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--color-primario);
-    }
+/* Opciones de talla: estilo y transición */
+.size-option {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #eee;
+    margin-right: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-    /* Productos mejorados */
-    .products-section {
-        background-color: rgba(250, 214, 214, 0.2);
-    }
+/* Estilo y color al pasar cursor sobre opción de talla */
+.size-option:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
 
-    .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
+/* Botón de añadir al carrito: fondo y transición */
+.btn-add-to-cart {
+    background: var(--color-primary);
+    color: white;
+    transition: all 0.3s ease;
+}
 
-    .product-card {
-        background: white;
-        border-radius: 16px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        position: relative;
-    }
+/* Cambio de fondo en hover para botón añadir carrito */
+.btn-add-to-cart:hover {
+    background: var(--color-secondary);
+}
 
-    .product-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background-color: var(--color-secundario);
-        color: white;
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        z-index: 2;
-    }
+/* Tarjeta de testimonios: fondo, sombra y padding */
+.testimonial-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    height: 100%;
+}
 
-    .product-image-container {
-        position: relative;
-        overflow: hidden;
-        height: 320px;
-    }
+/* Contenedor para posts de Instagram */
+.instagram-post {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-    .product-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
+/* Imagen en post Instagram */
+.instagram-post img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
 
-    .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
+/* Overlay oscuro para post Instagram con efecto hover */
+.instagram-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 1.5rem;
+}
 
-    .product-card:hover .product-image {
-        transform: scale(1.05);
-    }
+/* Mostrar overlay en hover sobre post Instagram */
+.instagram-post:hover .instagram-overlay {
+    opacity: 1;
+}
 
-    .product-info {
-        padding: 1.5rem;
+/* Media query para pantallas menores a 768px */
+@media (max-width: 768px) {
+    /* Ajustar altura de hero en móviles */
+    .hero-section {
+        height: 70vh;
+        min-height: 500px;
     }
-
-    .product-title {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .product-price {
-        font-weight: 600;
-        color: var(--color-secundario);
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .product-old-price {
-        text-decoration: line-through;
-        color: var(--color-texto-claro);
-        font-size: 0.9rem;
-        margin-left: 0.5rem;
-    }
-
-    .product-description {
-        color: var(--color-texto-claro);
-        margin-bottom: 1.5rem;
-        font-size: 0.95rem;
-        min-height: 60px;
-    }
-
-    .product-actions {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-    }
-
-    /* Testimonios mejorados */
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
-
-    .testimonial-card {
-        background: white;
-        border-radius: 16px;
-        padding: 2.5rem 2rem;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        position: relative;
-        transition: all 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    .testimonial-card:before {
-        content: '"';
-        position: absolute;
-        top: 1rem;
-        left: 1.5rem;
-        font-size: 4rem;
-        color: var(--color-rosa-claro);
-        font-family: serif;
-        line-height: 1;
-        opacity: 0.5;
-    }
-
-    .testimonial-content {
-        position: relative;
-        z-index: 1;
-    }
-
-    .rating {
-        color: #FFD700;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-    }
-
-    .testimonial-text {
-        font-style: italic;
-        margin-bottom: 1.5rem;
-        color: var(--color-texto-claro);
-        line-height: 1.7;
-    }
-
-    .testimonial-author {
-        display: flex;
-        align-items: center;
-    }
-
-    .author-image {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 1rem;
-        border: 2px solid var(--color-terciario);
-    }
-
-    .author-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .author-name {
-        font-weight: 600;
-        color: var(--color-primario);
-    }
-
-    .author-role {
-        font-size: 0.8rem;
-        color: var(--color-texto-claro);
-    }
-
-    /* WhatsApp Button mejorado */
-    .whatsapp-float {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 60px;
-        height: 60px;
-        background-color: #25D366;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-        z-index: 100;
-        transition: all 0.3s ease;
-        animation: pulse 2s infinite;
-    }
-
-    .whatsapp-float:hover {
-        transform: scale(1.1) translateY(-5px);
-        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-        animation: none;
-    }
-
-    /* Nuevo: Sección de Newsletter */
-    .newsletter-section {
-        background: linear-gradient(135deg, var(--color-primario), var(--color-rosa-oscuro));
-        color: white;
-        padding: 4rem 1rem;
-        text-align: center;
-    }
-
-    .newsletter-container {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .newsletter-title {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .newsletter-subtitle {
-        margin-bottom: 2rem;
-        opacity: 0.9;
-    }
-
-    .newsletter-form {
-        display: flex;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-    .newsletter-input {
-        flex: 1;
-        padding: 1rem;
-        border: none;
-        border-radius: 50px 0 0 50px;
-        font-size: 1rem;
-    }
-
-    .newsletter-button {
-        background-color: var(--color-crema);
-        color: var(--color-primario);
-        border: none;
-        padding: 0 2rem;
-        font-weight: 600;
-        border-radius: 0 50px 50px 0;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .newsletter-button:hover {
-        background-color: white;
-    }
-
-    /* Animaciones */
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes slideInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
-        }
-        70% {
-            box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-        }
-    }
-
-    /* Responsive mejorado */
-    @media (max-width: 768px) {
-        .hero-section {
-            height: 80vh;
-            min-height: 500px;
-        }
-        
-        .hero-title {
-            font-size: 2.5rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-        }
-        
-        .section {
-            padding: 3rem 0;
-        }
-        
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .benefits-grid,
-        .products-grid,
-        .testimonials-grid {
-            grid-template-columns: 1fr;
-            padding: 0 1rem;
-            gap: 1.5rem;
-        }
-        
-        .hero-buttons {
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .btn-primary,
-        .btn-secondary {
-            width: 100%;
-            max-width: 250px;
-            margin: 0 auto;
-        }
-        
-        .newsletter-form {
-            flex-direction: column;
-        }
-        
-        .newsletter-input {
-            border-radius: 50px;
-            margin-bottom: 1rem;
-        }
-        
-        .newsletter-button {
-            border-radius: 50px;
-            padding: 1rem;
-        }
-    }
-
-    /* Efecto de carga suave */
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            animation: none !important;
-            transition: none !important;
-        }
-    }
+}
