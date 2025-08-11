@@ -2,72 +2,91 @@
 
 @section('title', $variante->producto->nombre_p . ' | Editar Carrito')
 
+@section('estilos_css')
+    <link rel="stylesheet" href="{{ url('/css/carrito/carritoEditar.css') }}">
+@endsection
+
 @section('content')
     @php
-        // Cantidad que ya está en carrito para esta variante
         $carritoCantidad = session('carrito')[$variante->id_variantes]['cantidad'] ?? 0;
-        // Stock total: stock actual + cantidad en carrito (porque stock fue descontado)
         $stockTotal = $variante->stock + $carritoCantidad;
     @endphp
 
     <div class="container py-5">
-        <h1>Editar producto en el carrito</h1>
+        <div class="producto-container">
+            <div class="row align-items-center g-4">
+                <!-- Imagen producto -->
+                <div class="col-lg-5">
+                    <div class="producto-img-wrapper">
+                        <img src="{{ asset('/img/faja2.jpg') }}" alt="{{ $variante->producto->nombre_p }}" class="producto-img">
+                    </div>
+                </div>
 
-        <div class="card p-4 mb-4">
-            <h4>{{ $variante->producto->nombre_p }}</h4>
-            <p><strong>Talla:</strong> {{ $variante->talla->talla ?? 'Sin talla' }}</p>
-            <p><strong>Color:</strong> {{ $variante->color }}</p>
-            <p><strong>Precio:</strong> ${{ number_format($variante->precio, 2) }}</p>
-            <p>
-                <strong>Stock disponible: </strong>
-                <span id="stock-disponible">{{ $stockTotal }}</span>
-            </p>
-        </div>
+                <!-- Info producto -->
+                <div class="col-lg-7 producto-info">
+                    <h1 class="producto-titulo">{{ $variante->producto->nombre_p }}</h1>
+                    <p><strong>Talla:</strong> {{ $variante->talla->talla ?? 'Sin talla' }}</p>
+                    <p><strong>Color:</strong> {{ $variante->color }}</p>
 
-        <form action="{{ route('carrito.actualizar', $variante->id_variantes) }}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="cantidad" class="form-label">Cantidad</label>
-                <input 
-                    type="number" 
-                    id="cantidad" 
-                    name="cantidad" 
-                    class="form-control" 
-                    min="1" 
-                    max="{{ $stockTotal }}" 
-                    value="{{ $carritoCantidad > 0 ? $carritoCantidad : 1 }}" 
-                    required
-                >
+                    <div class="producto-precio">
+                        ${{ number_format($variante->precio, 2) }}
+                    </div>
+
+                    <div class="mt-3">
+                        <div class="detalle-item">Stock disponible: <span id="stock-disponible">{{ $stockTotal }}</span></div>
+                    </div>
+
+                    <!-- Formulario -->
+                    <form action="{{ route('carrito.actualizar', $variante->id_variantes) }}" method="POST" class="mt-4">
+                        @csrf
+                        <div class="mb-3">
+                            <input 
+                                type="number" 
+                                id="cantidad" 
+                                name="cantidad" 
+                                class="form-control" 
+                                min="1" 
+                                max="{{ $stockTotal }}" 
+                                value="{{ $carritoCantidad > 0 ? $carritoCantidad : 1 }}" 
+                                required
+                            >
+                        </div>
+
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn-editar">
+                                    Guardar cambios
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{ route('carrito.index') }}" class="btn-cancelar">
+                                    Cancelar
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">
-                Guardar cambios
-            </button>
-            <a href="{{ route('carrito.index') }}" class="btn btn-secondary ms-2">Cancelar</a>
-        </form>
+        </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const inputCantidad = document.getElementById('cantidad');
             const stockDisponibleSpan = document.getElementById('stock-disponible');
-
-            // Stock total (original + cantidad en carrito)
             const stockTotal = parseInt(inputCantidad.max);
 
             inputCantidad.addEventListener('input', function () {
                 let cantidadNueva = parseInt(this.value) || 1;
-                if(cantidadNueva < 1) cantidadNueva = 1;
-                if(cantidadNueva > stockTotal) cantidadNueva = stockTotal;
+                if (cantidadNueva < 1) cantidadNueva = 1;
+                if (cantidadNueva > stockTotal) cantidadNueva = stockTotal;
                 this.value = cantidadNueva;
 
-                // Stock disponible es stockTotal - cantidadNueva
                 let stockDisponible = stockTotal - cantidadNueva;
                 stockDisponibleSpan.textContent = stockDisponible;
             });
 
-            // Dispara evento input para inicializar stock disponible correcto
             inputCantidad.dispatchEvent(new Event('input'));
         });
     </script>
-
 @endsection

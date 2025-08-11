@@ -1,0 +1,163 @@
+/* Variables globales para colores */
+:root {
+    --colorPrimary: #f89fa1;
+    --colorSecondary: #fabdbd;
+    --colorAccent: #fad6d6;
+    --colorLight: #fefcd0;
+    --colorBackground: #94654c;
+    --text-dark: #2e1b12;
+    --text-muted: #6b5a4f;
+}
+
+/* Estilos base para el body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--colorAccent);
+}
+
+/* Contenedor principal del producto */
+.producto-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Wrapper para la imagen del producto */
+.producto-img-wrapper {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--colorLight);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Imagen del producto */
+.producto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Título del producto */
+.producto-titulo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+}
+
+/* Párrafos dentro de la info del producto */
+.producto-info p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Precio del producto */
+.producto-precio {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--colorPrimary);
+}
+
+/* Detalle individual dentro de lista de detalles */
+.detalle-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-dark);
+}
+
+/* Punto decorativo antes de cada detalle */
+.detalle-item::before {
+    content: "•";
+    color: var(--colorPrimary);
+    font-weight: bold;
+}
+
+/* Estilos para inputs y otros controles de formulario */
+.form-control {
+    border-radius: 10px;
+    padding: 0.6rem;
+    font-size: 0.95rem;
+    border: 1px solid var(--colorSecondary);
+    background-color: var(--colorAccent);
+    color: var(--text-dark);
+}
+
+/* Botón para editar */
+.btn-editar {
+    background: var(--colorPrimary);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Efecto hover para botón editar */
+.btn-editar:hover {
+    background: var(--colorSecondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(248, 159, 161, 0.4);
+}
+
+/* Botón para cancelar o acción secundaria */
+.btn-cancelar {
+    background: var(--colorLight);
+    border: 2px solid var(--colorPrimary);
+    color: var(--colorPrimary);
+    font-weight: 600;
+    padding: 0.8rem;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Efecto hover para botón cancelar */
+.btn-cancelar:hover {
+    background: var(--colorPrimary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(248, 159, 161, 0.4);
+}
+
+/* Media query para pantallas medianas */
+@media (max-width: 992px) {
+    .producto-container {
+        padding: 1.5rem;
+    }
+    .producto-img-wrapper {
+        height: 350px;
+    }
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .producto-container {
+        text-align: center;
+    }
+    .producto-img-wrapper {
+        height: 300px;
+    }
+    .producto-titulo {
+        font-size: 1.5rem;
+    }
+    .producto-precio {
+        font-size: 1.6rem;
+    }
+}
