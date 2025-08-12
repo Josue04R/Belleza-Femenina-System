@@ -65,6 +65,9 @@ class ProductosSeeder extends Seeder
             ['Faja Colombiana Postparto Invisible', 'FitMama', $categoriaIds[1], 'Lycra', 'Faja postparto colombiana invisible', 39.50, 'activo'],
         ];
 
+        // Colores disponibles
+        $colores = ['Negro', 'Beige', 'Blanco', 'Café'];
+
         foreach ($productos as $p) {
             DB::table('productos')->insert([
                 'nombre_p'    => $p[0],
@@ -82,20 +85,22 @@ class ProductosSeeder extends Seeder
             $productoId = DB::table('productos')
                 ->where('nombre_p', $p[0])
                 ->where('marca_p', $p[1])
-                ->orderByDesc('id_producto')  // Cambiado de id a id_producto
+                ->orderByDesc('id_producto')
                 ->value('id_producto');
 
             foreach ($tallaIds as $index => $tallaId) {
-                $precioVariante = $p[5] + ($index * 2.50);
-                DB::table('variantes_productos')->insert([
-                    'id_producto' => $productoId,
-                    'id_talla'    => $tallaId,
-                    'color'       => 'Negro',
-                    'stock'       => rand(5, 20),
-                    'precio'      => $precioVariante,
-                    'created_at'  => now(),
-                    'updated_at'  => now(),
-                ]);
+                foreach ($colores as $color) {
+                    $precioVariante = $p[5] + ($index * 2.50); // Ajuste por talla
+                    DB::table('variantes_productos')->insert([
+                        'id_producto' => $productoId,
+                        'id_talla'    => $tallaId,
+                        'color'       => $color,
+                        'stock'       => rand(5, 20),
+                        'precio'      => $precioVariante,
+                        'created_at'  => now(),
+                        'updated_at'  => now(),
+                    ]);
+                }
             }
         }
     }

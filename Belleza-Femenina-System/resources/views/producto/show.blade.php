@@ -31,6 +31,7 @@
 
                     @php
                         $primeraVariante = $producto->variantes->first();
+                        $colores = $producto->variantes->groupBy('color');
                     @endphp
                     @if($primeraVariante)
                         <div class="mt-3">
@@ -45,15 +46,25 @@
                         <input type="hidden" name="id_variante" id="id-variante" value="{{ $primeraVariante->id_variantes ?? '' }}">
 
                         <div class="row g-2">
+                            <!-- Select de color -->
                             <div class="col-md-6">
-                                <select id="talla-select" name="talla" class="form-select">
-                                    @foreach ($producto->variantes as $variante)
-                                        <option value="{{ $variante->id_variantes }}">
-                                            {{ $variante->talla->talla ?? 'Sin talla' }}
-                                        </option>
+                                <select id="color-select" class="form-select">
+                                    @foreach ($colores as $color => $variantesColor)
+                                        <option value="{{ $color }}">{{ $color }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
+                            <!-- Select de talla -->
+                            <div class="col-md-6">
+                                <select id="talla-select" name="talla" class="form-select">
+                                    <!-- JS llenará las tallas -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Cantidad -->
+                        <div class="row g-2 mt-2">
                             <div class="col-md-6">
                                 <input type="number" name="cantidad" id="cantidad" class="form-control" 
                                     min="1" max="{{ $primeraVariante->stock ?? 1 }}" value="1" required>
@@ -72,10 +83,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function() {
-            let variantes = @json($producto->variantes->keyBy('id_variantes'));
+            let variantes = @json($producto->variantes);
+
+            function cargarTallas(colorSeleccionado) {
+                let opciones = '';
+                let primeraVariante = null;
+
+                variantes.forEach(v => {
+                    if (v.color === colorSeleccionado) {
+                        opciones += `<option value="${v.id_variantes}">${v.talla.talla}</option>`;
+                        if (!primeraVariante) primeraVariante = v;
+                    }
+                });
+
+                $('#talla-select').html(opciones);
+
+                if (primeraVariante) {
+                    actualizarInfoVariante(primeraVariante.id_variantes);
+                }
+            }
 
             function actualizarInfoVariante(idVariante) {
-                let variante = variantes[idVariante];
+                let variante = variantes.find(v => v.id_variantes == idVariante);
                 if (variante) {
                     $('#color').text(variante.color);
                     $('#stock').text(variante.stock);
@@ -89,11 +118,16 @@
                 }
             }
 
+            $('#color-select').on('change', function() {
+                cargarTallas($(this).val());
+            });
+
             $('#talla-select').on('change', function() {
                 actualizarInfoVariante($(this).val());
             });
 
-            actualizarInfoVariante($('#talla-select').val());
+            // Inicializar
+            cargarTallas($('#color-select').val());
         });
     </script>
 @endsection
