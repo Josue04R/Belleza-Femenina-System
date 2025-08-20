@@ -56,7 +56,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item ms-2">
-                                <a class="nav-link navLink cartIcon" href="#">
+                                <a class="nav-link navLink cartIcon" href="/carrito">
                                     <i class="bi bi-bag"></i>
                                     <span class="cartBadge">3</span>
                                 </a>

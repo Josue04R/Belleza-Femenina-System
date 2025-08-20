@@ -7,37 +7,68 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="{{ url('/css/login/login.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="loginContainer" id="container">
+
         <!-- Sign In -->
         <div class="formContainer signInContainer">
-            <form>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
                 <h1>Login</h1>
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
+
+                @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
                 <div class="socialIcons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-google"></i></a>
                 </div>
+
                 <span>Ingresa tus datos</span>
-                <input type="email" class="formControlFeminine" placeholder="Email" />
-                <input type="password" class="formControlFeminine" placeholder="Password" />
+                <input type="email" name="email" class="formControlFeminine" placeholder="Email" required />
+                <input type="password" name="password" class="formControlFeminine" placeholder="Password" required />
                 <a href="#">Olvidaste tu contraseña</a>
-                <button class="btnFeminine">Iniciar sesion</button>
+                <button class="btnFeminine">Iniciar sesión</button>
             </form>
         </div>
         
         <!-- Sign Up -->
         <div class="formContainer signUpContainer">
-            <form>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
                 <h1>Crea tu cuenta</h1>
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <div class="socialIcons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-google"></i></a>
                 </div>
+
                 <span>Ingresa tus datos</span>
-                <input type="text" class="formControlFeminine" placeholder="Name" />
-                <input type="email" class="formControlFeminine" placeholder="Email" />
-                <input type="password" class="formControlFeminine" placeholder="Password" />
+                <input type="text" name="nombre" class="formControlFeminine" placeholder="Nombre" required />
+                <input type="text" name="apellido" class="formControlFeminine" placeholder="Apellido" required />
+                <input type="email" name="email" class="formControlFeminine" placeholder="Email" required />
+                <input type="text" name="telefono" class="formControlFeminine" placeholder="Teléfono (opcional)" />
+                <input type="password" name="password" class="formControlFeminine" placeholder="Password" required />
+                <input type="password" name="password_confirmation" class="formControlFeminine" placeholder="Confirmar Password" required />
                 <button class="btnFeminine">Crear cuenta</button>
             </form>
         </div>
@@ -63,3 +94,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </body>
 </html>
+
+
+
