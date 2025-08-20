@@ -15,40 +15,59 @@
     <!-- Navbar Elegante -->
     <nav class="navbar navbar-expand-lg customNavbar sticky-top">
         <div class="container">
+            <!-- Marca -->
             <a class="navbar-brand navBrand" href="/">
                 <i class="me-2"></i>Mi Tienda
             </a>
-            
+
+            <!-- Botón para móviles -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            <div class="collapse navbar-collapse" id="navbarContent">   
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link navLink dropdown-toggle userDropdown" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle me-1"></i> Mi Cuenta
-                        </a>
-                        <ul class="dropdown-menu dropdownMenu dropdown-menu-end">
-                            <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión</a></li>
-                            <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-person-plus me-2"></i> Registrarse</a></li>
-                            <li><hr class="dropdown-divider dropdownDivider"></li>
-                            <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
-                            <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-heart me-2"></i> Favoritos</a></li>
-                            <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-box-arrow-left me-2"></i> Cerrar Sesión</a></li>
+
+            <!-- Contenido colapsable -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <div class="row w-100 align-items-center">
+                    <!-- Columna izquierda vacía para balancear -->
+                    <div class="col-3"></div>
+
+                    <!-- Buscador centrado -->
+                    <div class="col-6">
+                        <form class="d-flex justify-content-center" method="GET" action="{{route('buscar')}}">
+                            <input class="form-control me-2 w-75" name="query" type="search" placeholder="Buscar productos..." aria-label="Buscar">
+                            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                        </form>
+                    </div>
+
+                    <!-- Menú a la derecha -->
+                    <div class="col-3">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link navLink dropdown-toggle userDropdown" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-person-circle me-1"></i> Mi Cuenta
+                                </a>
+                                <ul class="dropdown-menu dropdownMenu dropdown-menu-end">
+                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión</a></li>
+                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-person-plus me-2"></i> Registrarse</a></li>
+                                    <li><hr class="dropdown-divider dropdownDivider"></li>
+                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
+                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-heart me-2"></i> Favoritos</a></li>
+                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-box-arrow-left me-2"></i> Cerrar Sesión</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item ms-2">
+                                <a class="nav-link navLink cartIcon" href="#">
+                                    <i class="bi bi-bag"></i>
+                                    <span class="cartBadge">3</span>
+                                </a>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link navLink cartIcon" href="#">
-                            <i class="bi bi-bag"></i>
-                            <span class="cartBadge">3</span>
-                        </a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
-    
+
     <!-- Contenido principal -->
     <main class="mainContent">      
             <!-- Espacio para tu contenido -->

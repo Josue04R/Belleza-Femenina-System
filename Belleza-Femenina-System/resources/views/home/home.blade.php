@@ -120,7 +120,7 @@
         </div> <!-- cierre del row -->
 
         <div class="text-center mt-5">
-            <a href="#" class="btn btn-outline-primary btn-lg">Ver Todos los Productos</a>
+            <a href="{{route('productos')}}" class="btn btn-outline-primary btn-lg">Ver Todos los Productos</a>
         </div>
     </div>
 </section>

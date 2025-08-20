@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnexosController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
@@ -16,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Ruta principal - muestra todos los productos
-Route::get('/', function () {
-    $productos = Producto::all();
-    return view('home.home', compact('productos'));
-})->name('home');
+Route::controller(HomeController::class)->group(function (){
+    Route::get('/', 'home')->name('home');
+    Route::get('/busqueda','busqueda')->name('buscar');
+    Route::get('/productos','todos_productos')->name('productos');
+});
+
 
 // Ruta para login
 Route::view('/login', 'login.login')->name('login');
