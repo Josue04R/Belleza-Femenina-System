@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnexosController;
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,12 @@ Route::get('/', function () {
 })->name('home');
 
 // Ruta para login
-Route::view('/login', 'login.login')->name('login');
+
+Route::get('/login', [ClienteController::class, 'mostrarLogin'])->name('login');
+Route::post('/login', [ClienteController::class, 'login']);
+
+Route::get('/register', [ClienteController::class, 'mostrarRegistro'])->name('register');
+Route::post('/register', [ClienteController::class, 'registrar']);
 
 // Rutas del controlador Anexos agrupadas
 Route::controller(AnexosController::class)->group(function () {
