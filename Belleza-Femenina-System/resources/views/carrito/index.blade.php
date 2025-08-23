@@ -19,7 +19,7 @@
             <div class="cart-header animate_animated animate_fadeInDown">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2 class="mb-0 fw-bold"><i class="fas fa-shopping-cart me-2"></i>Tu Carrito</h2>
-                    <a class="text-white fw-medium d-flex align-items-center" href="#" style="text-decoration: none;">
+                    <a class="text-white fw-medium d-flex align-items-center" href="/productos" style="text-decoration: none;">
                         <i class="fas fa-arrow-left me-2"></i>
                         <span>Seguir comprando</span>
                     </a>
