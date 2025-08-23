@@ -135,9 +135,10 @@
                                     <i class="fas fa-credit-card me-2"></i>Proceder pedido
                                 </a>
                             @else
-                                <a href="{{ route('login.ligin') }}" class="btn btn-primary btn-lg w-100 mb-3 pulse-effect">
-                                     <i class="fas fa-credit-card me-2"></i>Proceder pedido
+                                <a href="{{ route('login') }}" class="btn btn-primary btn-lg w-100 mb-3 pulse-effect">
+                                    <i class="fas fa-credit-card me-2"></i>Proceder pedido
                                 </a>
+
                             @endif
 
                             

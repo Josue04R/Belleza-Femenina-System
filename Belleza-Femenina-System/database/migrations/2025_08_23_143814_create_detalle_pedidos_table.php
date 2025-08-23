@@ -12,8 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detalle_pedidos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+           $table->id('idDetallePedido')->autoIncrement();
+            $table->unsignedBigInteger('idPedido');
+            $table->unsignedBigInteger('id_variantes')->nullable();
+            $table->integer('cantidad');
+            $table->decimal('precioUnitario', 12, 2);
+            $table->decimal('subtotal', 12, 2);
+
+            // Relaciones
+            $table->foreign('idPedido')
+                ->references('idPedido')
+                ->on('pedidos')
+                ->onDelete('cascade');
+
+
+           $table->foreign('id_variantes')
+            ->references('id_variantes')
+            ->on('variantes_productos')
+            ->onDelete('set null');
         });
     }
 

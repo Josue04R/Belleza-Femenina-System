@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     protected $table = 'pedidos';
+    protected $primaryKey = 'idPedido'; 
+    public $incrementing = true;
+    protected $keyType = 'int';
+    public $timestamps = false;
+
     protected $fillable = [
-        'clienteId',
-        'empleadoId',
+        'idCliente',
+        'idEmpleado',
         'fecha',
         'direccion',
         'estado',
@@ -19,11 +24,8 @@ class Pedido extends Model
 
     public function detalles()
     {
-        return $this->hasMany(DetallePedido::class, 'pedidoId');
+        return $this->hasMany(DetallePedido::class, 'idPedido');
     }
 
-    public function cliente()
-    {
-        return $this->belongsTo(Cliente::class, 'clienteId');
-    }
 }
+

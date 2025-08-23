@@ -55,3 +55,5 @@ Route::get('/producto/{id}', [ProductoController::class, 'show'])->name('product
 
 Route::get('/checkout', [PedidoController::class, 'create'])->name('checkout.create');
 Route::post('/checkout', [PedidoController::class, 'store'])->name('checkout.store');
+
+Route::get('/mis-pedidos', [PedidoController::class, 'misPedidos'])->name('pedidos.misPedidos');

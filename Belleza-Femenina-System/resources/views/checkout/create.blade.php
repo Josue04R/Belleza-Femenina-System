@@ -6,8 +6,6 @@
 <div class="container py-5">
     <h2 class="mb-4">Completar Pedido</h2>
 
-    <h1>Hola {{ Session::get('cliente_nombre') }}</h1>
-    <p>ID: {{ Session::get('cliente_id') }}</p>
     <form action="{{ route('checkout.store') }}" method="POST">
         @csrf
         <div class="mb-3">

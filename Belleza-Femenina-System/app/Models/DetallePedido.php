@@ -7,22 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class DetallePedido extends Model
 {
     protected $table = 'detalle_pedidos';
-    
+    protected $primaryKey = 'idDetallePedido';
+    public $incrementing = true;
+    protected $keyType = 'int';
+    public $timestamps = false;
+
     protected $fillable = [
-        'pedidoId',
-        'varianteId',
+        'idPedido',
+        'id_variantes',
         'cantidad',
         'precioUnitario',
         'subtotal'
     ];
 
-    public function pedido()
-    {
-        return $this->belongsTo(Pedido::class, 'pedidoId');
-    }
-
     public function variante()
     {
-        return $this->belongsTo(VarianteProducto::class, 'varianteId');
+        return $this->belongsTo(VarianteProducto::class, 'id_variantes');
     }
 }
