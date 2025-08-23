@@ -22,6 +22,9 @@
             </div>
         </div>
     </div>
+
+<p>Bienvenido, {{ Session::get('cliente_nombre') }} (ID: {{ Session::get('cliente_id') }})</p>
+
 </section>
 
 

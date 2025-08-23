@@ -16,6 +16,7 @@ class ClienteController extends Controller
 
     
     public function login(Request $request) {
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -23,14 +24,16 @@ class ClienteController extends Controller
 
         $cliente = Cliente::where('email', $request->email)->first();
 
+
         if ($cliente && Hash::check($request->password, $cliente->password)) {
-            Session::put('cliente_id', $cliente->idcliente);
+            Session::put('cliente_id', $cliente->idCliente);
             Session::put('cliente_nombre', $cliente->nombre);
             return redirect()->route('home');
-        }
+        }   
 
         return back()->withErrors(['email' => 'Correo o contraseña incorrectos']);
     }
+
 
  
     public function mostrarRegistro() {
