@@ -4,6 +4,7 @@ use App\Http\Controllers\AnexosController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +51,7 @@ Route::post('/carrito/actualizar/{id_variante}', [CarritoController::class, 'act
 
 // Ruta para mostrar producto individual
 Route::get('/producto/{id}', [ProductoController::class, 'show'])->name('productos.show');
+
+
+Route::get('/checkout', [PedidoController::class, 'create'])->name('checkout.create');
+Route::post('/checkout', [PedidoController::class, 'store'])->name('checkout.store');

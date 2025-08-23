@@ -15,7 +15,7 @@
 @section('content')
     <div class="container-fluid py-4">
         <div class="main-container animate_animated animate_fadeIn">
-            <!-- Encabezado del carrito -->
+            <!-- Encabezao del carrito -->
             <div class="cart-header animate_animated animate_fadeInDown">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2 class="mb-0 fw-bold"><i class="fas fa-shopping-cart me-2"></i>Tu Carrito</h2>
@@ -130,9 +130,16 @@
                                 <div class="total-price">${{ number_format($subtotal, 2) }}</div>
                             </div>
                             
-                            <button class="btn btn-primary btn-lg w-100 mb-3 pulse-effect">
-                                <i class="fas fa-credit-card me-2"></i>Proceder al pago
-                            </button>
+                            @if (Session::get('cliente_nombre') != null)
+                                <a href="{{ route('checkout.create') }}" class="btn btn-primary btn-lg w-100 mb-3 pulse-effect">
+                                    <i class="fas fa-credit-card me-2"></i>Proceder pedido
+                                </a>
+                            @else
+                                <a href="{{ route('login.ligin') }}" class="btn btn-primary btn-lg w-100 mb-3 pulse-effect">
+                                     <i class="fas fa-credit-card me-2"></i>Proceder pedido
+                                </a>
+                            @endif
+
                             
                             <div class="text-center mb-4">
                                 <img src="https://via.placeholder.com/300x50?text=Secure+Payments" alt="Métodos de pago" class="img-fluid">

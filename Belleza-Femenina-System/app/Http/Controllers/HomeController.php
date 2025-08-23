@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function home(){
-         $productos = Producto::take(8)->get();
+        $productos = Producto::take(8)->get();
         return view('home.home', compact('productos'));         
     }
 

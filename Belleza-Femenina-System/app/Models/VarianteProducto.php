@@ -21,7 +21,7 @@ class VarianteProducto extends Model
 
     protected $primaryKey = 'id_variantes';
 
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'id_producto',

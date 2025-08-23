@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('color', 30);
             $table->integer('stock');
             $table->decimal('precio', 12, 2);
-            $table->timestamps();
-
             // Foreign keys
             $table->foreign('id_producto')
                 ->references('id_producto')
