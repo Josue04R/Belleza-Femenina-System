@@ -4,8 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class DetallePedido
+ *
+ * Representa un detalle de pedido en la tabla 'detalle_pedidos'.
+ *
+ * @property int $idDetallePedido       Clave primaria del detalle
+ * @property int $idPedido              ID del pedido al que pertenece
+ * @property int $id_variantes          ID de la variante del producto
+ * @property int $cantidad              Cantidad pedida
+ * @property float $precioUnitario      Precio unitario de la variante
+ * @property float $subtotal            Subtotal de este detalle
+ *
+ * @method \Illuminate\Database\Eloquent\Relations\BelongsTo variante()  Relación con la variante del producto
+ */
+
 class DetallePedido extends Model
 {
+
     protected $table = 'detalle_pedidos';
     protected $primaryKey = 'idDetallePedido';
     public $incrementing = true;
@@ -24,4 +40,5 @@ class DetallePedido extends Model
     {
         return $this->belongsTo(VarianteProducto::class, 'id_variantes');
     }
+    
 }
