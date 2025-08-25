@@ -3,6 +3,7 @@
 @section('estilos_css')
     <link href="{{ asset('css/home/home.css') }}" rel="stylesheet">
 @endsection
+
 @section('content')
 <div class="container mt-4">
     <h3>Resultados de búsqueda para: <span class="text-primary">{{ $query }}</span></h3>
@@ -13,7 +14,8 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="product-card position-relative">
                         <div class="product-img position-relative">
-                            <img src="{{ asset('/img/faja1.png') }}" alt="{{ $producto->nombre_p }}" class="img-fluid">
+                            {{-- Mostrar la imagen del producto o imagen por defecto --}}
+                            <img src="{{ $producto->imagen ?? asset('/img/faja1.png') }}" alt="{{ $producto->nombre_p }}" class="img-fluid">
                             <div class="product-badge position-absolute">
                                 <span class="badge badge-new p-2">Nuevo</span>
                             </div>

@@ -3,7 +3,7 @@
 @section('title', $producto->nombre_p . ' | Mi Tienda')
 
 @section('estilos_css')
-    <link rel="stylesheet" href="{{ url('/css/producto/productoShow.css') }}">
+<link rel="stylesheet" href="{{ url('/css/producto/productoShow.css') }}">
 @endsection
 
 @section('content')
@@ -13,7 +13,11 @@
                 <!-- Imagen producto -->
                 <div class="col-lg-5">
                     <div class="producto-img-wrapper">
-                        <img src="{{ asset('/img/faja2.jpg') }}" alt="{{ $producto->nombre_p }}" class="producto-img">
+                        @if($producto->imagen)
+                            <img id="producto-imagen" src="{{ $producto->imagen }}" alt="{{ $producto->nombre_p }}" class="producto-img">
+                        @else
+                            <img id="producto-imagen" src="{{ asset('/img/faja2.jpg') }}" alt="{{ $producto->nombre_p }}" class="producto-img">
+                        @endif
                     </div>
                 </div>
 
@@ -80,54 +84,60 @@
         </div>
     </div>
 
+    <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(function() {
-            let variantes = @json($producto->variantes);
+    $(function() {
+        let variantes = @json($producto->variantes);
 
-            function cargarTallas(colorSeleccionado) {
-                let opciones = '';
-                let primeraVariante = null;
+        function cargarTallas(colorSeleccionado) {
+            let opciones = '';
+            let primeraVariante = null;
 
-                variantes.forEach(v => {
-                    if (v.color === colorSeleccionado) {
-                        opciones += `<option value="${v.id_variantes}">${v.talla.talla}</option>`;
-                        if (!primeraVariante) primeraVariante = v;
-                    }
-                });
-
-                $('#talla-select').html(opciones);
-
-                if (primeraVariante) {
-                    actualizarInfoVariante(primeraVariante.id_variantes);
+            variantes.forEach(v => {
+                if (v.color === colorSeleccionado) {
+                    opciones += `<option value="${v.id_variantes}">${v.talla.talla}</option>`;
+                    if (!primeraVariante) primeraVariante = v;
                 }
-            }
-
-            function actualizarInfoVariante(idVariante) {
-                let variante = variantes.find(v => v.id_variantes == idVariante);
-                if (variante) {
-                    $('#color').text(variante.color);
-                    $('#stock').text(variante.stock);
-                    $('#id-variante').val(variante.id_variantes);
-                    $('#precio').text(`$${parseFloat(variante.precio).toFixed(2)}`);
-
-                    let maxStock = variante.stock > 0 ? variante.stock : 1;
-                    $('#cantidad').attr('max', maxStock);
-                    if ($('#cantidad').val() > maxStock) $('#cantidad').val(maxStock);
-                    if ($('#cantidad').val() < 1) $('#cantidad').val(1);
-                }
-            }
-
-            $('#color-select').on('change', function() {
-                cargarTallas($(this).val());
             });
 
-            $('#talla-select').on('change', function() {
-                actualizarInfoVariante($(this).val());
-            });
+            $('#talla-select').html(opciones);
 
-            // Inicializar
-            cargarTallas($('#color-select').val());
+            if (primeraVariante) {
+                actualizarInfoVariante(primeraVariante.id_variantes);
+            }
+        }
+
+        function actualizarInfoVariante(idVariante) {
+            let variante = variantes.find(v => v.id_variantes == idVariante);
+            if (variante) {
+                $('#color').text(variante.color);
+                $('#stock').text(variante.stock);
+                $('#id-variante').val(variante.id_variantes);
+                $('#precio').text(`$${parseFloat(variante.precio).toFixed(2)}`);
+
+                // Actualizar imagen si tiene
+                if (variante.imagen) {
+                    $('#producto-imagen').attr('src', variante.imagen);
+                }
+
+                let maxStock = variante.stock > 0 ? variante.stock : 1;
+                $('#cantidad').attr('max', maxStock);
+                if ($('#cantidad').val() > maxStock) $('#cantidad').val(maxStock);
+                if ($('#cantidad').val() < 1) $('#cantidad').val(1);
+            }
+        }
+
+        $('#color-select').on('change', function() {
+            cargarTallas($(this).val());
         });
+
+        $('#talla-select').on('change', function() {
+            actualizarInfoVariante($(this).val());
+        });
+
+        // Inicializar
+        cargarTallas($('#color-select').val());
+    });
     </script>
 @endsection
