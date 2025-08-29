@@ -6,8 +6,11 @@
     <title>@yield('title', 'Mi Tienda')</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link href="{{ url('/css/layout/template1.css') }}" rel="stylesheet">
+
 
      @yield('estilos_css')
 </head>
@@ -79,60 +82,79 @@
     <!-- Footer Completo -->
     <footer class="customFooter">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h5 class="footerTitle">Mi tienda</h5>
+            <div class="row text-center text-lg-start justify-content-center">
+                <div class="col-12 col-lg-6 mb-4">
+                    <h5 class="footerTitle">Belleza Femenina</h5>
                     <p class="mb-4">Ofreciendo productos exclusivos y de alta calidad con un estilo único y sofisticado.</p>
                     <div class="mt-4">
-                        <a href="#" class="socialIcon"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="socialIcon"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="socialIcon"><i class="bi bi-tiktok"></i></a>
+                        <a href="https://www.facebook.com/share/19t2FwHm9h/?mibextid=wwXIfr" class="socialIcon" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/bellezafemeninasv?igsh=MWEwNWF3ZmNqeHhlMg==" class="socialIcon" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <a href="https://wa.me/50375833922" class="socialIcon" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+                <div class="col-6 col-lg-3 mb-4">
                     <h5 class="footerTitle">Comprar</h5>
-                    <a href="#" class="footerLink">Camisas</a>
-                    <a href="#" class="footerLink">Pantalones</a>
-                    <a href="#" class="footerLink">Short</a>
-                    <a href="#" class="footerLink">Pulseras</a>
-                    <a href="#" class="footerLink">Faldas</a>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a  class="footerLink">
+                            <i class="bi bi-bag-fill me-2"></i> Fajas
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a class="footerLink">
+                            <i class="bi bi-heart-fill me-2"></i> Brasiers
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a class="footerLink">
+                            <i class="bi bi-gem me-2"></i> Accesorios femeninos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="footerLink">
+                            <i class="bi bi-three-dots me-2"></i> Y más ...
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
                 
-                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+               <div class="col-6 col-lg-3 mb-4">
                     <h5 class="footerTitle">Ayuda</h5>
-                    <a href="{{url('sobre_nosotros')}}" class="footerLink">Sobre Nosotros</a>
-                    <a href="{{url('preguntas_frecuentes')}}" class="footerLink">Preguntas Frecuentes</a>
-                    <a href="{{url('guia_tallas')}}" class="footerLink">Guía de tallas</a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('sobre_nosotros') }}" class="footerLink">Sobre Nosotros</a></li>
+                        <li><a href="{{ route('preguntas_frecuentes') }}" class="footerLink">Preguntas Frecuentes</a></li>
+                        <li><a href="{{ route('guia_tallas') }}" class="footerLink">Guía de tallas</a></li>
+                    </ul>
                 </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <h5 class="footerTitle">Cotizar</h5>
-                    <p class="mb-3">Suscríbete para recibir nuestras últimas novedades y ofertas exclusivas.</p>
-                    <form class="mb-4">
-                        <div class="input-group">
-                            <input type="email" class="form-control newsletterInput" placeholder="Tu correo">
-                            <button class="btn newsletterBtn" type="submit">Suscribir</button>
-                        </div>
-                    </form>
-                    <div class="payment-methods">
-                        <img src="https://via.placeholder.com/250x40?text=Payment+Methods" alt="Métodos de pago" class="img-fluid" style="border-radius: 5px;">
-                    </div>
-                </div>
+
             </div>
+
+
+
             
             <hr class="my-4" style="border-color: rgba(255,255,255,0.15);">
             
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <p class="copyrightText mb-0">&copy; 2025 Mi Tienda. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="copyrightText me-3" style="text-decoration: none;">Términos</a>
-                    <a href="#" class="copyrightText me-3" style="text-decoration: none;">Privacidad</a>
-                    <a href="#" class="copyrightText" style="text-decoration: none;">Cookies</a>
+           <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0 fw-bold" style="font-size: 1.1rem;">
+                        &copy; 2025 Belleza Femenina. Todos los derechos reservados.
+                    </p>
                 </div>
             </div>
+
         </div>
     </footer>
     
