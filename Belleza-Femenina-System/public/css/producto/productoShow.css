@@ -129,3 +129,23 @@ body {
         font-size: 1.6rem;
     }
 }
+
+
+.custom-btn {
+    background-color: transparent !important; 
+    border: 2px solid #f89fa1 !important;   
+    color: #94654c !important;              
+    transition: all 0.3s ease; 
+    padding: 0.75rem 2rem;       
+    font-size: 1.2rem;           
+    border-radius: 12px;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.custom-btn:hover {
+    background-color: #f89fa1 !important;   
+    color: #ffffff !important;              
+    border-color: #f89fa1 !important;        
+    text-decoration: none;
+}

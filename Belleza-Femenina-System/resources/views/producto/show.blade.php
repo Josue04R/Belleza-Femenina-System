@@ -75,9 +75,21 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn-carrito mt-3">
-                            Agregar al carrito
-                        </button>
+                       <div class="d-flex justify-content-center mt-3 gap-3" style="max-width: 600px; margin: auto;">
+                            <button type="submit" class="btn-carrito flex-fill" style="height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center;">
+                                Agregar al carrito
+                            </button>
+
+                            <a href="{{ route('home') }}" class="btn-carrito flex-fill" style="height: 50px; font-size: 1rem; display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                                <i class="bi bi-arrow-left me-2"></i> Volver al inicio
+                            </a>
+                        </div>
+
+
+
+
+
+
                     </form>
                 </div>
             </div>
