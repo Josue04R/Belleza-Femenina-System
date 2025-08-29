@@ -25,23 +25,14 @@ body {
     margin: auto;
 }
 
-/* Wrapper para la imagen del producto */
-.producto-img-wrapper {
-    width: 100%;
-    height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--colorLight);
-    border-radius: 15px;
-    overflow: hidden;
-}
+
 
 /* Imagen del producto */
 .producto-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 15px;    
 }
 
 /* Título del producto */
