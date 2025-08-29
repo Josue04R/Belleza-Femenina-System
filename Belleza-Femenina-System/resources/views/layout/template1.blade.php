@@ -38,7 +38,7 @@
                     <div class="col-6">
                         <form class="d-flex justify-content-center" method="GET" action="{{route('buscar')}}">
                             <input class="form-control me-2 w-75" name="query" type="search" placeholder="Buscar productos..." aria-label="Buscar">
-                            <button type="submit" class="custom-btn">Buscar</button>
+                            <button type="submit" class="custom-btn2">Buscar</button>
 
                         </form>
                     </div>

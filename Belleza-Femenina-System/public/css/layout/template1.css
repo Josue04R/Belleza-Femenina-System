@@ -247,7 +247,7 @@ body {
     }
 }
 
-.custom-btn {
+.custom-btn2 {
     background-color: transparent !important; 
     border: 2px solid #ffffff !important;   
     color: #ffffff !important;              
@@ -260,7 +260,7 @@ body {
     display: inline-block;
 }
 
-.custom-btn:hover {
+.custom-btn2:hover {
     background-color: #ffffff !important;   
     color: #94654c !important;              
     border: 2px solid #ffffff !important;        

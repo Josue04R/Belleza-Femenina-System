@@ -251,12 +251,10 @@ h1, h2, h3, h4, h5 {
         min-height: 500px;
     }
 }
-
-
 .custom-btn {
-    background-color: transparent; 
-    border: 2px solid #f89fa1;   
-    color: #94654c;              
+    background-color: transparent !important; 
+    border: 2px solid #f89fa1 !important;   
+    color: #94654c !important;              
     transition: all 0.3s ease; 
     padding: 0.75rem 2rem;       
     font-size: 1.2rem;           
@@ -266,8 +264,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .custom-btn:hover {
-    background-color: #f89fa1;   
-    color: #ffffff;              
-    border-color: #f89fa1;        
+    background-color: #f89fa1 !important;   
+    color: #ffffff !important;              
+    border-color: #f89fa1 !important;        
     text-decoration: none;
 }
+
