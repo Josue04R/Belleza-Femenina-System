@@ -51,8 +51,8 @@
                                     <i class="bi bi-person-circle me-1"></i> Mi Cuenta
                                 </a>
                                 <ul class="dropdown-menu dropdownMenu dropdown-menu-end">
-                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión</a></li>
-                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-person-plus me-2"></i> Registrarse</a></li>
+                                    <li><a class="dropdown-item dropdownItem" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión</a></li>
+                                    <li><a class="dropdown-item dropdownItem" href="{{ route('register') }}"><i class="bi bi-person-plus me-2"></i> Registrarse</a></li>
                                     <li><hr class="dropdown-divider dropdownDivider"></li>
                                     <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
                                     <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-heart me-2"></i> Favoritos</a></li>
