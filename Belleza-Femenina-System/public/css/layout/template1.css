@@ -246,3 +246,23 @@ body {
         padding: 2.5rem 1.5rem;
     }
 }
+
+.custom-btn {
+    background-color: transparent !important; 
+    border: 2px solid #ffffff !important;   
+    color: #ffffff !important;              
+    transition: all 0.3s ease; 
+    padding: 0.75rem 2rem;       
+    font-size: 1.2rem;           
+    border-radius: 12px;
+    line-height: 1;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.custom-btn:hover {
+    background-color: #ffffff !important;   
+    color: #94654c !important;              
+    border: 2px solid #ffffff !important;        
+    text-decoration: none;
+}

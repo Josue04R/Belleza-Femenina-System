@@ -19,12 +19,11 @@
             <div class="col-lg-6">
                 <h1 class="display-3 fw-bold text-white mb-4">Nueva Colección Primavera 2023</h1>
                 <p class="lead text-white mb-5">Descubre las últimas tendencias en moda femenina</p>
-                <a href="#productos" class="btn btn-primary btn-lg px-5 py-3">Ver Colección</a>
+                <a href="#productos" class="custom-btn" style="color: white;">Ver Colección</a>
             </div>
         </div>
     </div>
 
-    <p>Bienvenido, {{ Session::get('cliente_nombre') }} (ID: {{ Session::get('cliente_id') }})</p>
 </section>
 
 <!-- Categorías -->
@@ -101,7 +100,7 @@
         </div>
 
         <div class="text-center mt-5">
-            <a href="{{ route('productos') }}" class="btn btn-outline-primary btn-lg">Ver Todos los Productos</a>
+            <a href="{{ route('productos') }}" class="custom-btn btn-lg">Ver Todos los Productos</a>
         </div>
     </div>
 </section>

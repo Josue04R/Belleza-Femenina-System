@@ -20,7 +20,7 @@
         <div class="container">
             <!-- Marca -->
             <a class="navbar-brand navBrand" href="/">
-                <i class="me-2"></i>Mi Tienda
+                <i class="me-2"></i>Belleza Femenina
             </a>
 
             <!-- Botón para móviles -->
@@ -38,7 +38,8 @@
                     <div class="col-6">
                         <form class="d-flex justify-content-center" method="GET" action="{{route('buscar')}}">
                             <input class="form-control me-2 w-75" name="query" type="search" placeholder="Buscar productos..." aria-label="Buscar">
-                            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                            <button type="submit" class="custom-btn">Buscar</button>
+
                         </form>
                     </div>
 
@@ -74,7 +75,7 @@
     <!-- Contenido principal -->
     <main class="mainContent">      
             <!-- Espacio para tu contenido -->
-        <div class="text-center py-5">
+        <div class="text-center">
                 @yield('content')
         </div>
     </main>
