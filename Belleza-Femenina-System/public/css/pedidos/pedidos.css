@@ -1,0 +1,125 @@
+:root {
+    --color-primary: #94654c;        
+    --color-secondary: #f89fa1;      
+    --color-light: #fad6d6;          
+    --color-bg: #fff9fa;             
+    --color-text: #5a4a3a;   
+}
+
+h1{
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.pedidos-container {
+    background-color: var(--color-bg);
+    min-height: 100vh;
+    padding: 50px 20px; 
+}
+
+.pedido-lugar {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #94654c; 
+}
+
+.row.g-4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.col-lg-4, .col-md-6 {
+    display: flex;
+}
+
+.pedido-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(148, 101, 76, 0.15);
+    flex: 1 1 300px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 350px; 
+}
+
+.pedido-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(148, 101, 76, 0.25);
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.pedido-body {
+    color: var(--color-text);
+    flex: 1;
+}
+
+.pedido-status-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.pedido-status {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.pedido-status.pendiente { background-color: var(--color-secondary); }
+.pedido-status.completado { background-color: var(--color-primary); }
+.pedido-status.cancelado { background-color: #999; }
+
+.pedido-total {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.pedido-observaciones {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.pedido-detalles ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.pedido-detalles li {
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--color-light);
+}
+
+.pedido-aviso {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #c0392b;
+    font-weight: 500;
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .pedido-card { margin-bottom: 20px; min-height: 350px; }
+}
+
+@media (max-width: 768px) {
+    .pedido-card { min-height: auto; }
+    .pedido-header, .pedido-status-total { flex-direction: column; align-items: flex-start; }
+}

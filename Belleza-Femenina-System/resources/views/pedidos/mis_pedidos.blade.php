@@ -1,42 +1,60 @@
 @extends('layout.template1')
 
+@section('estilos_css')
+<link rel="stylesheet" href="{{ url('/css/pedidos/pedidos.css') }}">
+@endsection
+
 @section('content')
-    <h1>Mis Pedidos</h1>
+<div class="pedidos-container py-5">
+    <h1 class="text-center mb-5">Mis Pedidos</h1>
 
     @if($pedidos->isEmpty())
-        <p>No tienes pedidos aún.</p>
+        <p class="text-center text-muted">No tienes pedidos aún.</p>
     @endif
 
-    @foreach($pedidos as $pedido)
-        <div style="border:1px solid #ccc; padding:15px; margin-bottom:15px; border-radius:8px;">
-            <p><strong>Pedido #{{ $pedido->idPedido }}</strong></p>
-            <p>Fecha: {{ $pedido->fecha }}</p>
-            <p>Estado: {{ ucfirst($pedido->estado) }}</p>
-            <p>Total: ${{ number_format($pedido->total,2) }}</p>
-            @if($pedido->observaciones)
-                <p>Observaciones: {{ $pedido->observaciones }}</p>
-            @endif
+    <div class="row g-4">
+        @foreach($pedidos as $pedido)
+        <div class="col-lg-4 col-md-6">
+            <div class="pedido-card">
+                <div class="pedido-header">
+                    <span>Pedido #{{ $pedido->idPedido }}</span>
+                    <span>{{ \Carbon\Carbon::parse($pedido->fecha)->format('d/m/Y') }}</span>
+                </div>
+                <div class="pedido-body">
+                    <div class="pedido-status-total">
+                        <span class="pedido-status {{ $pedido->estado }}">{{ ucfirst($pedido->estado) }}</span>
+                        <span class="pedido-total">Total: ${{ number_format($pedido->total, 2) }}</span>
+                    </div>
 
-            <h4>Detalles del pedido:</h4>
-            <ul>
-            @foreach($pedido->detalles as $detalle)
-                <li>
-                    {{ $detalle->cantidad }} x {{ $detalle->variante->nombre ?? 'Producto' }}
-                    @if(isset($detalle->variante->color))
-                        | Color: {{ $detalle->variante->color }}
+                    @if(isset($pedido->direccion) && $pedido->direccion)
+                        <p class="pedido-lugar"><strong>Lugar de entrega:</strong> {{ $pedido->direccion }}</p>
                     @endif
-                    @if(isset($detalle->variante->talla['talla']))
-                        | Talla: {{ $detalle->variante->talla['talla'] }}
-                    @endif
-                    - Precio Unitario: ${{ number_format($detalle->precioUnitario,2) }}
-                    | Subtotal: ${{ number_format($detalle->subtotal,2) }}
-                </li>
-            @endforeach
-            </ul>
 
-            <p style="color:red; font-weight:bold;">
-                Para cualquier cancelación o devolución, por favor contacta directamente con la empresa para verificar si aplica la devolución de dinero.
-            </p>
+
+                    @if($pedido->observaciones)
+                        <p class="pedido-observaciones">Observaciones: {{ $pedido->observaciones }}</p>
+                    @endif
+
+                    <div class="pedido-detalles">
+                        <ul>
+                        @foreach($pedido->detalles as $detalle)
+                            <li>
+                                {{ $detalle->cantidad }} x {{ $detalle->variante->nombre ?? 'Producto' }}
+                                @if(isset($detalle->variante->color)) | Color: {{ $detalle->variante->color }} @endif
+                                @if(isset($detalle->variante->talla['talla'])) | Talla: {{ $detalle->variante->talla['talla'] }} @endif
+                                - ${{ number_format($detalle->subtotal,2) }}
+                            </li>
+                        @endforeach
+                        </ul>
+                    </div>
+
+                    <p class="pedido-aviso">
+                        Para cancelaciones o devoluciones, contacta directamente con la empresa.
+                    </p>
+                </div>
+            </div>
         </div>
-    @endforeach
+        @endforeach
+    </div>
+</div>
 @endsection
