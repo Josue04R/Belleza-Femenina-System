@@ -9,21 +9,19 @@ use Illuminate\Support\Facades\Session;
 
 class ClienteController extends Controller
 {
-    
+    // Mostrar login
     public function mostrarLogin() {
         return view('login.login'); 
     }
 
-    
+    // Login
     public function login(Request $request) {
-
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
         $cliente = Cliente::where('email', $request->email)->first();
-
 
         if ($cliente && Hash::check($request->password, $cliente->password)) {
             Session::put('cliente_id', $cliente->idCliente);
@@ -34,13 +32,12 @@ class ClienteController extends Controller
         return back()->withErrors(['email' => 'Correo o contraseña incorrectos']);
     }
 
-
- 
+    // Mostrar registro
     public function mostrarRegistro() {
         return view('login.login'); 
     }
 
-
+    // Registrar cliente
     public function registrar(Request $request) {
         $request->validate([
             'nombre' => 'required|max:50',
@@ -61,14 +58,14 @@ class ClienteController extends Controller
         return redirect()->route('login')->with('success', 'Cuenta creada correctamente. Ahora puedes iniciar sesión.');
     }
 
-    public function mostrarPerfil()
-    {
+    // Mostrar perfil
+    public function mostrarPerfil() {
         $cliente = Cliente::find(Session::get('cliente_id'));
         return view('cliente.perfil', compact('cliente'));
     }
 
-    public function actualizarPerfil(Request $request)
-    {
+    // Actualizar perfil
+    public function actualizarPerfil(Request $request) {
         $cliente = Cliente::find(Session::get('cliente_id'));
 
         // Validación de los campos
@@ -78,41 +75,32 @@ class ClienteController extends Controller
             'email' => 'required|email|unique:clientes,email,' . $cliente->idCliente . ',idCliente',
             'telefono' => 'nullable|max:20',
             'password' => 'nullable|min:6|confirmed',
-            'current_email' => 'required|email',
-            'current_password' => 'required'
+            'current_password' => 'required_with:password'
         ]);
 
-        // Confirmar correo y contraseña actuales
-        if ($request->current_email !== $cliente->email || !Hash::check($request->current_password, $cliente->password)) {
-            return back()->withErrors(['current_password' => 'El correo o la contraseña actual no son correctos.']);
-        }
-
-        // Si pasa la validación, actualizamos
         $cliente->nombre = $request->nombre;
         $cliente->apellido = $request->apellido;
         $cliente->email = $request->email;
         $cliente->telefono = $request->telefono;
 
+        // Cambiar contraseña solo si se proporciona
         if ($request->filled('password')) {
+            if (!Hash::check($request->current_password, $cliente->password)) {
+                return back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
+            }
             $cliente->password = Hash::make($request->password);
         }
 
         $cliente->save();
+        Session::put('cliente_nombre', $cliente->nombre);
 
         return back()->with('success', 'Perfil actualizado correctamente.');
     }
 
-    public function logout()
-    {
-        // Eliminar todas las variables de sesión relacionadas al cliente
+    // Logout
+    public function logout() {
         Session::forget('cliente_id');
         Session::forget('cliente_nombre');
-        
-        // O eliminar toda la sesión: Session::flush();
-        // Session::flush();
         return redirect()->route('login')->with('success', 'Has cerrado sesión correctamente.');
     }
-
-
-
 }

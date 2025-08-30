@@ -67,6 +67,9 @@ Route::middleware([\App\Http\Middleware\AuthCliente::class])->group(function () 
     Route::get('/mis-pedidos', [PedidoController::class, 'misPedidos'])->name('pedidos.misPedidos');
 });
 
+//Route::get('auth/google', [ClienteController::class, 'redirectToGoogle'])->name('google.login');
+//Route::get('auth/google/callback', [ClienteController::class, 'handleGoogleCallback']);
+
 Route::fallback(function () {
     return redirect()->route('home');
 });
