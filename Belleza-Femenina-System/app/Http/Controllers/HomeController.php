@@ -7,14 +7,30 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function home(){
+    /**
+     * Muestra la página principal con una selección de productos destacados.
+     *
+     * @return \Illuminate\View\View Vista de inicio con productos.
+     */
+    public function home()
+    {
         $productos = Producto::take(8)->get();
-        return view('home.home', compact('productos'));         
+        return view('home.home', compact('productos'));
     }
 
-    public function busqueda(Request $request){
+    /**
+     * Realiza una búsqueda de productos por nombre o descripción.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View Vista con resultados de búsqueda.
+     */
+    public function busqueda(Request $request)
+    {
+        $request->validate([
+            'query' => 'required|string|min:2'
+        ]);
+
         $query = $request->input('query');
-       
 
         $productos = Producto::where('nombre_p', 'ILIKE', "%{$query}%")
             ->orWhere('descripcion', 'ILIKE', "%{$query}%")
@@ -23,10 +39,15 @@ class HomeController extends Controller
         return view('home.busqueda', compact('productos', 'query'));
     }
 
-    public function todos_productos(){
+    /**
+     * Muestra todos los productos disponibles en el sistema.
+     *
+     * @return \Illuminate\View\View Vista con todos los productos.
+     */
+    public function todos_productos()
+    {
         $query = "Todos los productos";
         $productos = Producto::all();
         return view('home.busqueda', compact('productos', 'query'));
     }
-
 }
