@@ -5,9 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Modelo Cliente
+ *
+ * @property int $idCliente
+ * @property string $nombre
+ * @property string $apellido
+ * @property string $email
+ * @property string $telefono
+ * @property string $password
+ */
 class Cliente extends Model
 {
     use HasFactory;
+
     public $timestamps = false;
 
     protected $table = 'clientes';
