@@ -101,6 +101,6 @@ class ClienteController extends Controller
     public function logout() {
         Session::forget('cliente_id');
         Session::forget('cliente_nombre');
-        return redirect()->route('login')->with('success', 'Has cerrado sesión correctamente.');
+        return redirect()->route('home')->with('success', 'Has cerrado sesión correctamente.');
     }
 }

@@ -31,14 +31,18 @@
                 @endif
 
                 <input type="email" name="email" class="formControlFeminine" placeholder="Email" required />
-                <input type="password" name="password" class="formControlFeminine" placeholder="Password" required />
+                <input type="password" name="password" class="formControlFeminine" placeholder="Password" required
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
+                       title="Debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo" />
+                <small id="loginPasswordHelp" class="form-text text-muted"></small>
+
                 <button class="btnFeminine w-100">Iniciar sesión</button>
             </form>
         </div>
         
         <!-- Sign Up -->
         <div class="formContainer signUpContainer">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" id="registerForm">
                 @csrf
                 <h1>Crear Cuenta</h1>
 
@@ -50,11 +54,21 @@
                     </div>
                 @endif
 
-                <input type="text" name="nombre" class="formControlFeminine" placeholder="Nombre" required />
-                <input type="text" name="apellido" class="formControlFeminine" placeholder="Apellido" required />
+                <input type="text" name="nombre" class="formControlFeminine" placeholder="Nombre" required
+                       pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                       title="Solo se permiten letras y espacios" />
+                <input type="text" name="apellido" class="formControlFeminine" placeholder="Apellido" required
+                       pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                       title="Solo se permiten letras y espacios" />
                 <input type="email" name="email" class="formControlFeminine" placeholder="Email" required />
-                <input type="text" name="telefono" class="formControlFeminine" placeholder="Teléfono (opcional)" />
-                <input type="password" name="password" class="formControlFeminine" placeholder="Password" required />
+                <input type="text" name="telefono" id="telefono" class="formControlFeminine" placeholder="Teléfono (opcional)"
+                       pattern="^\d{4}-?\d{4}$"
+                       title="Solo números y un guion opcional (ej: 6059-6068)" />
+                <input type="password" name="password" id="passwordRegister" class="formControlFeminine" placeholder="Password" required
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
+                       title="Debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo" />
+                <small id="passwordHelp" class="form-text text-muted"></small>
+
                 <input type="password" name="password_confirmation" class="formControlFeminine" placeholder="Confirmar Password" required />
                 <button class="btnFeminine w-100">Crear cuenta</button>
             </form>
@@ -78,5 +92,37 @@
     </div>
 
     <script src="{{ url('/js/login/login.js') }}"></script>
+
+    <script>
+        // Formateo de teléfono al enviar
+        document.getElementById('registerForm').addEventListener('submit', function(e){
+            let telInput = document.getElementById('telefono');
+            let tel = telInput.value.replace(/\D/g,''); // solo números
+
+            if(tel.length === 8){
+                // formato 60596068 -> 6059-6068
+                telInput.value = tel.slice(0,4) + '-' + tel.slice(4,8);
+            }
+        });
+
+        // Mensaje en tiempo real para contraseña
+        const passwordInput = document.getElementById('passwordRegister');
+        const passwordHelp = document.getElementById('passwordHelp');
+
+        passwordInput.addEventListener('input', function() {
+            const val = passwordInput.value;
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+            if(regex.test(val)){
+                passwordHelp.textContent = "Contraseña segura ✅";
+                passwordHelp.classList.remove('text-danger');
+                passwordHelp.classList.add('text-success');
+            } else {
+                passwordHelp.textContent = "Debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo ❌";
+                passwordHelp.classList.remove('text-success');
+                passwordHelp.classList.add('text-danger');
+            }
+        });
+    </script>
 </body>
 </html>
