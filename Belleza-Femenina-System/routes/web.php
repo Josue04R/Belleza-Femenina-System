@@ -30,6 +30,8 @@ Route::controller(HomeController::class)->group(function (){
 
 Route::get('/login', [ClienteController::class, 'mostrarLogin'])->name('login');
 Route::post('/login', [ClienteController::class, 'login']);
+Route::get('/logout', [ClienteController::class, 'logout'])->name('logout');
+
 
 Route::get('/register', [ClienteController::class, 'mostrarRegistro'])->name('register');
 Route::post('/register', [ClienteController::class, 'registrar']);
@@ -56,4 +58,15 @@ Route::get('/producto/{id}', [ProductoController::class, 'show'])->name('product
 Route::get('/checkout', [PedidoController::class, 'create'])->name('checkout.create');
 Route::post('/checkout', [PedidoController::class, 'store'])->name('checkout.store');
 
-Route::get('/mis-pedidos', [PedidoController::class, 'misPedidos'])->name('pedidos.misPedidos');
+
+// Rutas que requieren que el cliente esté logueado
+// Rutas protegidas solo para clientes logueados
+Route::middleware([\App\Http\Middleware\AuthCliente::class])->group(function () {
+    Route::get('/perfil', [ClienteController::class, 'mostrarPerfil'])->name('perfil');
+    Route::post('/perfil/actualizar', [ClienteController::class, 'actualizarPerfil'])->name('perfil.actualizar');
+    Route::get('/mis-pedidos', [PedidoController::class, 'misPedidos'])->name('pedidos.misPedidos');
+});
+
+Route::fallback(function () {
+    return redirect()->route('home');
+});

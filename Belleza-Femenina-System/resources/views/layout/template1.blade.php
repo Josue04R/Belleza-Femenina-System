@@ -51,20 +51,45 @@
                                     <i class="bi bi-person-circle me-1"></i> Mi Cuenta
                                 </a>
                                 <ul class="dropdown-menu dropdownMenu dropdown-menu-end">
-                                    <li><a class="dropdown-item dropdownItem" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión</a></li>
-                                    <li><a class="dropdown-item dropdownItem" href="{{ route('register') }}"><i class="bi bi-person-plus me-2"></i> Registrarse</a></li>
-                                    <li><hr class="dropdown-divider dropdownDivider"></li>
-                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-person me-2"></i> Perfil</a></li>
-                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-heart me-2"></i> Favoritos</a></li>
-                                    <li><a class="dropdown-item dropdownItem" href="#"><i class="bi bi-box-arrow-left me-2"></i> Cerrar Sesión</a></li>
+                                    @if (!Session::has('cliente_id'))
+                                        <li><a class="dropdown-item dropdownItem" href="{{ route('login') }}"><i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión</a></li>
+                                        <li><a class="dropdown-item dropdownItem" href="{{ route('register') }}"><i class="bi bi-person-plus me-2"></i> Registrarse</a></li>
+                                    @else
+                                        <li>
+                                            <a class="dropdown-item dropdownItem" href="{{ url('/perfil') }}">
+                                                <i class="bi bi-person me-2"></i> Perfil
+                                            </a>
+                                        </li>    
+                                        <li>
+                                            <a class="dropdown-item dropdownItem" href="{{ route('pedidos.misPedidos') }}">
+                                                <i class="bi bi-card-checklist me-2"></i> Pedidos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item dropdownItem" href="{{ route('logout') }}">
+                                                <i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión
+                                            </a>
+                                        </li>
+                                    @endif
+                                                               
                                 </ul>
                             </li>
+                           @php
+                                $cantidadCarrito = 0;
+                                if(session()->has('carrito')){
+                                    foreach(session('carrito') as $item){
+                                        $cantidadCarrito += $item['cantidad'];
+                                    }
+                                }
+                            @endphp
+
                             <li class="nav-item ms-2">
-                                <a class="nav-link navLink cartIcon" href="/carrito">
+                                <a class="nav-link navLink cartIcon" href="{{ route('carrito.index') }}">
                                     <i class="bi bi-bag"></i>
-                                    <span class="cartBadge">3</span>
+                                    <span class="cartBadge">{{ $cantidadCarrito }}</span>
                                 </a>
                             </li>
+
                         </ul>
                     </div>
                 </div>

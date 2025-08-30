@@ -60,4 +60,59 @@ class ClienteController extends Controller
 
         return redirect()->route('login')->with('success', 'Cuenta creada correctamente. Ahora puedes iniciar sesión.');
     }
+
+    public function mostrarPerfil()
+    {
+        $cliente = Cliente::find(Session::get('cliente_id'));
+        return view('cliente.perfil', compact('cliente'));
+    }
+
+    public function actualizarPerfil(Request $request)
+    {
+        $cliente = Cliente::find(Session::get('cliente_id'));
+
+        // Validación de los campos
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'apellido' => 'required|max:50',
+            'email' => 'required|email|unique:clientes,email,' . $cliente->idCliente . ',idCliente',
+            'telefono' => 'nullable|max:20',
+            'password' => 'nullable|min:6|confirmed',
+            'current_email' => 'required|email',
+            'current_password' => 'required'
+        ]);
+
+        // Confirmar correo y contraseña actuales
+        if ($request->current_email !== $cliente->email || !Hash::check($request->current_password, $cliente->password)) {
+            return back()->withErrors(['current_password' => 'El correo o la contraseña actual no son correctos.']);
+        }
+
+        // Si pasa la validación, actualizamos
+        $cliente->nombre = $request->nombre;
+        $cliente->apellido = $request->apellido;
+        $cliente->email = $request->email;
+        $cliente->telefono = $request->telefono;
+
+        if ($request->filled('password')) {
+            $cliente->password = Hash::make($request->password);
+        }
+
+        $cliente->save();
+
+        return back()->with('success', 'Perfil actualizado correctamente.');
+    }
+
+    public function logout()
+    {
+        // Eliminar todas las variables de sesión relacionadas al cliente
+        Session::forget('cliente_id');
+        Session::forget('cliente_nombre');
+        
+        // O eliminar toda la sesión: Session::flush();
+        // Session::flush();
+        return redirect()->route('login')->with('success', 'Has cerrado sesión correctamente.');
+    }
+
+
+
 }
