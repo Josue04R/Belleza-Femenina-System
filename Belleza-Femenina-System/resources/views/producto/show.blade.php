@@ -47,7 +47,7 @@
                     <!-- Formulario -->
                     <form id="form-agregar-carrito" action="{{ route('carrito.agregar') }}" method="POST" class="mt-4">
                         @csrf
-                        <input type="hidden" name="idVariante" id="idVariante" value="{{ $primeraVariante->idVariante" ?? '' }}">
+                        <input type="hidden" name="idVariante" id="idVariante" value="{{ $primeraVariante->idVariante ?? '' }}">
 
                         <div class="row g-2">
                             <!-- Select de color -->
