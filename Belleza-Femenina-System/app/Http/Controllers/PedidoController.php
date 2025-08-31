@@ -103,7 +103,7 @@ class PedidoController extends Controller
         foreach ($carrito as $producto) {
             DetallePedido::create([
                 'idPedido'       => $pedido->idPedido, // nombre real de la columna
-                'id_variantes'   => $producto['id_variante'],
+                'idVariante'   => $producto['idVariante'],
                 'cantidad'       => $producto['cantidad'],
                 'precioUnitario' => $producto['precio'],
                 'subtotal'       => $producto['precio'] * $producto['cantidad'],

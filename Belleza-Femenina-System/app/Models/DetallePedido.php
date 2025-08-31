@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetallePedido extends Model
 {
 
-    protected $table = 'detalle_pedidos';
+    protected $table = 'detallePedidos';
     protected $primaryKey = 'idDetallePedido';
     public $incrementing = true;
     protected $keyType = 'int';
@@ -30,7 +30,7 @@ class DetallePedido extends Model
 
     protected $fillable = [
         'idPedido',
-        'id_variantes',
+        'idVariante',
         'cantidad',
         'precioUnitario',
         'subtotal'
