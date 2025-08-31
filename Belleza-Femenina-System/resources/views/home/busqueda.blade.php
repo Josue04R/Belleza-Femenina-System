@@ -15,7 +15,7 @@
                         <div class="product-card position-relative">
                             <div class="product-img position-relative">
                                 {{-- Mostrar la imagen del producto o imagen por defecto --}}
-                                <img src="{{ $producto->imagen ?? asset('/img/faja1.png') }}" alt="{{ $producto->nombre_p }}" class="img-fluid">
+                                <img src="{{ $producto->imagen ?? asset('/img/faja1.png') }}" alt="{{ $producto->nombreProducto }}" class="img-fluid">
                                 <div class="product-badge position-absolute">
                                     <span class="badge badge-new p-2">Nuevo</span>
                                 </div>
@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="p-4">
-                                <h3 class="h5 fw-bold mb-1">{{ $producto->nombre_p }}</h3>
+                                <h3 class="h5 fw-bold mb-1">{{ $producto->nombreProducto }}</h3>
                                 <p class="small text-muted mb-2">{{ $producto->descripcion }}</p>
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div class="product-price">
@@ -44,7 +44,7 @@
                                         <i class="fas fa-star-half-alt"></i>
                                     </div>
                                 </div>
-                                <a href="{{ route('productos.show', $producto->id_producto) }}" class="btn btn-add-to-cart w-100 py-2">
+                                <a href="{{ route('productos.show', $producto->idProducto) }}" class="btn btn-add-to-cart w-100 py-2">
                                     <i class="fas fa-shopping-bag me-2"></i> Comprar
                                 </a>
                             </div>

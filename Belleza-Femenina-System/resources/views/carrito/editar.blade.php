@@ -8,7 +8,7 @@
 
 @section('content')
     @php
-        $carritoCantidad = session('carrito')[$variante->id_variantes]['cantidad'] ?? 0;
+        $carritoCantidad = session('carrito')[$variante->idVariante]['cantidad'] ?? 0;
         $stockTotal = $variante->stock + $carritoCantidad;
     @endphp
 
@@ -18,13 +18,13 @@
                 <!-- Imagen producto -->
                 <div class="col-lg-5">
                     <div class="producto-img-wrapper">
-                        <img src="{{ asset('/img/faja2.jpg') }}" alt="{{ $variante->producto->nombre_p }}" class="producto-img">
+                        <img src="{{ asset('/img/faja2.jpg') }}" alt="{{ $variante->producto->nombreProducto }}" class="producto-img">
                     </div>
                 </div>
 
                 <!-- Info producto -->
                 <div class="col-lg-7 producto-info">
-                    <h1 class="producto-titulo">{{ $variante->producto->nombre_p }}</h1>
+                    <h1 class="producto-titulo">{{ $variante->producto->nombreProducto }}</h1>
                     <p><strong>Talla:</strong> {{ $variante->talla->talla ?? 'Sin talla' }}</p>
                     <p><strong>Color:</strong> {{ $variante->color }}</p>
 
@@ -37,7 +37,7 @@
                     </div>
 
                     <!-- Formulario -->
-                    <form action="{{ route('carrito.actualizar', $variante->id_variantes) }}" method="POST" class="mt-4">
+                    <form action="{{ route('carrito.actualizar', $variante->idVariante) }}" method="POST" class="mt-4">
                         @csrf
                         <div class="mb-3">
                             <input 

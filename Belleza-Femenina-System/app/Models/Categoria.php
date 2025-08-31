@@ -15,7 +15,7 @@ class Categoria extends Model
 {
     protected $table = 'categorias';
 
-    protected $primaryKey = 'id_cate';
+    protected $primaryKey = 'idCategoria';
 
     // Como tienes timestamps en la migración, no necesitas desactivar
     public $timestamps = true;
@@ -28,6 +28,6 @@ class Categoria extends Model
     // Relación con productos (una categoría tiene muchos productos)
     public function productos()
     {
-        return $this->hasMany(Producto::class, 'id_cate');
+        return $this->hasMany(Producto::class, 'idCategoria');
     }
 }

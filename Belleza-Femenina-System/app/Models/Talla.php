@@ -14,7 +14,7 @@ class Talla extends Model
 {
     protected $table = 'tallas';
 
-    protected $primaryKey = 'id_talla';
+    protected $primaryKey = 'idTalla';
 
     public $timestamps = true;
 
@@ -22,7 +22,7 @@ class Talla extends Model
 
     public function variantes()
     {
-        return $this->hasMany(VarianteProducto::class, 'id_talla');
+        return $this->hasMany(VarianteProducto::class, 'idTalla');
     }
     
 }

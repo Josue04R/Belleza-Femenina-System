@@ -21,14 +21,14 @@ class Producto extends Model
 {
     protected $table = 'productos';
 
-    protected $primaryKey = 'id_producto';
+    protected $primaryKey = 'idProducto';
 
     public $timestamps = true;
 
     protected $fillable = [
-        'nombre_p',
-        'marca_p',
-        'id_cate',
+        'nombreProducto',
+        'marcaProducto',
+        'idCategoria',
         'material',
         'descripcion',
         'precio',
@@ -36,15 +36,15 @@ class Producto extends Model
         'estado',
     ];
 
-    // Relación con categoría (asumiendo que tienes modelo Categoria)
+    
     public function categoria()
     {
-        return $this->belongsTo(Categoria::class, 'id_cate');
+        return $this->belongsTo(Categoria::class, 'idCategoria');
     }
 
-    // Relación con variantes de producto (asumiendo que las tienes)
+    
     public function variantes()
     {
-        return $this->hasMany(VarianteProducto::class, 'id_producto');
+        return $this->hasMany(VarianteProducto::class, 'idProducto');
     }
 }

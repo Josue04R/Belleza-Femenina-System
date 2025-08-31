@@ -28,11 +28,11 @@ class CarritoController extends Controller
     public function agregar(Request $request)
     {
         $request->validate([
-            'id_variante' => 'required|exists:variantes_productos,id_variantes',
+            'idVariante' => 'required|exists:variantesProdcuto,idVariante',
             'cantidad' => 'required|integer|min:1'
         ]);
 
-        $variante = VarianteProducto::with('producto', 'talla')->find($request->id_variante);
+        $variante = VarianteProducto::with('producto', 'talla')->find($request->idVariante);
         if (!$variante) {
             return back()->with('error', 'Variante no encontrada.');
         }
@@ -42,12 +42,12 @@ class CarritoController extends Controller
         }
 
         $carrito = session()->get('carrito', []);
-        $id = $variante->id_variantes;
+        $id = $variante->idVariante;
 
         if (!isset($carrito[$id])) {
             $carrito[$id] = [
-                'id_variante' => $variante->id_variantes,
-                'producto' => $variante->producto->nombre_p,
+                'idVariante' => $variante->idVariante,
+                'producto' => $variante->producto->nombreProducto,
                 'imagen' => $variante->producto->imagen ?? 'https://www.encantolatino.com.do/wp-content/uploads/2023/05/faja-colombiana-republica-dominicana.jpg',
                 'talla' => $variante->talla->talla ?? 'Sin talla',
                 'color' => $variante->color,
@@ -71,24 +71,24 @@ class CarritoController extends Controller
      * Elimina una variante de producto del carrito y recupera el stock.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id_variante
+     * @param  int  $idVariante
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function eliminar(Request $request, $id_variante)
+    public function eliminar(Request $request, $idVariante)
     {
         $carrito = session()->get('carrito', []);
 
-        if (isset($carrito[$id_variante])) {
-            $cantidad = $carrito[$id_variante]['cantidad'];
+        if (isset($carrito[$idVariante])) {
+            $cantidad = $carrito[$idVariante]['cantidad'];
 
             // Recuperar variante para devolver stock
-            $variante = VarianteProducto::find($id_variante);
+            $variante = VarianteProducto::find($idVariante);
             if ($variante) {
                 $variante->stock += $cantidad;
                 $variante->save();
             }
 
-            unset($carrito[$id_variante]);
+            unset($carrito[$idVariante]);
             session()->put('carrito', $carrito);
 
             return back()->with('success', 'Producto eliminado del carrito.');
@@ -100,12 +100,12 @@ class CarritoController extends Controller
     /**
      * Muestra la vista para editar la cantidad de una variante en el carrito.
      *
-     * @param  int  $id_variante
+     * @param  int  $idVariante
      * @return \Illuminate\View\View
      */
-    public function editar($id_variante)
+    public function editar($idVariante)
     {
-        $variante = VarianteProducto::with('producto', 'talla')->findOrFail($id_variante);
+        $variante = VarianteProducto::with('producto', 'talla')->findOrFail($idVariante);
 
         return view('carrito.editar', compact('variante'));
     }
@@ -114,10 +114,10 @@ class CarritoController extends Controller
      * Actualiza la cantidad de una variante en el carrito y ajusta el stock en BD.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id_variante
+     * @param  int  $idVariante
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function actualizar(Request $request, $id_variante)
+    public function actualizar(Request $request, $idVariante)
     {
         $request->validate([
             'cantidad' => 'required|integer|min:1',
@@ -125,17 +125,17 @@ class CarritoController extends Controller
 
         $carrito = session()->get('carrito', []);
 
-        if (!isset($carrito[$id_variante])) {
+        if (!isset($carrito[$idVariante])) {
             return back()->with('error', 'Producto no encontrado en el carrito.');
         }
 
-        $variante = VarianteProducto::find($id_variante);
+        $variante = VarianteProducto::find($idVariante);
         if (!$variante) {
             return back()->with('error', 'Producto no encontrado.');
         }
 
         $cantidadNueva = $request->cantidad;
-        $cantidadActual = $carrito[$id_variante]['cantidad'];
+        $cantidadActual = $carrito[$idVariante]['cantidad'];
 
         if ($cantidadNueva > $cantidadActual) {
             $incremento = $cantidadNueva - $cantidadActual;
@@ -150,7 +150,7 @@ class CarritoController extends Controller
 
         $variante->save();
 
-        $carrito[$id_variante]['cantidad'] = $cantidadNueva;
+        $carrito[$idVariante]['cantidad'] = $cantidadNueva;
         session()->put('carrito', $carrito);
 
         return redirect()->route('carrito.index')->with('success', 'Cantidad actualizada correctamente.');

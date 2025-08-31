@@ -17,15 +17,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class VarianteProducto extends Model
 {
-    protected $table = 'variantes_productos';
+    protected $table = 'variantesProducto';
 
-    protected $primaryKey = 'id_variantes';
+    protected $primaryKey = 'idVariante';
 
     public $timestamps = false;
 
     protected $fillable = [
-        'id_producto',
-        'id_talla',
+        'idProducto',
+        'idTalla',
         'color',
         'stock',
         'precio',
@@ -33,11 +33,11 @@ class VarianteProducto extends Model
 
     public function producto()
     {
-        return $this->belongsTo(Producto::class, 'id_producto');
+        return $this->belongsTo(Producto::class, 'idProducto');
     }
 
     public function talla()
     {
-        return $this->belongsTo(Talla::class, 'id_talla');
+        return $this->belongsTo(Talla::class, 'idTalla');
     }
 }

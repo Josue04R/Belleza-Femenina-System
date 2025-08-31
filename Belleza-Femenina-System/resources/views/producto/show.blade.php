@@ -1,6 +1,6 @@
 @extends('layout.template1')
 
-@section('title', $producto->nombre_p . ' | Mi Tienda')
+@section('title', $producto->nombreProducto . ' | Mi Tienda')
 
 @section('estilos_css')
 <link rel="stylesheet" href="{{ url('/css/producto/productoShow.css') }}">
@@ -14,17 +14,17 @@
                 <div class="col-lg-5">
                     <div class="producto-img-wrapper">
                         @if($producto->imagen)
-                            <img id="producto-imagen" src="{{ $producto->imagen }}" alt="{{ $producto->nombre_p }}" class="producto-img">
+                            <img id="producto-imagen" src="{{ $producto->imagen }}" alt="{{ $producto->nombreProducto }}" class="producto-img">
                         @else
-                            <img id="producto-imagen" src="{{ asset('/img/faja2.jpg') }}" alt="{{ $producto->nombre_p }}" class="producto-img">
+                            <img id="producto-imagen" src="{{ asset('/img/faja2.jpg') }}" alt="{{ $producto->nombreProducto }}" class="producto-img">
                         @endif
                     </div>
                 </div>
 
                 <!-- Info producto -->
                 <div class="col-lg-7 producto-info">
-                    <h1 class="producto-titulo">{{ $producto->nombre_p }}</h1>
-                    <p><strong>Marca:</strong> {{ $producto->marca_p }}</p>
+                    <h1 class="producto-titulo">{{ $producto->nombreProducto }}</h1>
+                    <p><strong>Marca:</strong> {{ $producto->marcaProducto }}</p>
                     <p><strong>Material:</strong> {{ $producto->material }}</p>
                     <p><strong>Descripción:</strong> {{ $producto->descripcion }}</p>
 
@@ -47,7 +47,7 @@
                     <!-- Formulario -->
                     <form id="form-agregar-carrito" action="{{ route('carrito.agregar') }}" method="POST" class="mt-4">
                         @csrf
-                        <input type="hidden" name="id_variante" id="id-variante" value="{{ $primeraVariante->id_variantes ?? '' }}">
+                        <input type="hidden" name="idVariante" id="idVariante" value="{{ $primeraVariante->idVariante" ?? '' }}">
 
                         <div class="row g-2">
                             <!-- Select de color -->
@@ -108,7 +108,7 @@
 
             variantes.forEach(v => {
                 if (v.color === colorSeleccionado) {
-                    opciones += `<option value="${v.id_variantes}">${v.talla.talla}</option>`;
+                    opciones += `<option value="${v.idVariante}">${v.talla.talla}</option>`;
                     if (!primeraVariante) primeraVariante = v;
                 }
             });
@@ -116,16 +116,16 @@
             $('#talla-select').html(opciones);
 
             if (primeraVariante) {
-                actualizarInfoVariante(primeraVariante.id_variantes);
+                actualizarInfoVariante(primeraVariante.idVariante);
             }
         }
 
         function actualizarInfoVariante(idVariante) {
-            let variante = variantes.find(v => v.id_variantes == idVariante);
+            let variante = variantes.find(v => v.idVariante == idVariante);
             if (variante) {
                 $('#color').text(variante.color);
                 $('#stock').text(variante.stock);
-                $('#id-variante').val(variante.id_variantes);
+                $('#id-variante').val(variante.idVariante);
                 $('#precio').text(`$${parseFloat(variante.precio).toFixed(2)}`);
 
                 // Actualizar imagen si tiene
