@@ -140,48 +140,7 @@
                                 </a>
 
                             @endif
-
-                            
-                            <div class="text-center mb-4">
-                                <img src="https://via.placeholder.com/300x50?text=Secure+Payments" alt="Métodos de pago" class="img-fluid">
-                            </div>
-                            
-                            <div class="accordion mb-3" id="shippingAccordion">
-                                <div class="accordion-item border-0">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#shippingInfo">
-                                            <i class="fas fa-truck me-2"></i>Estimación de envío
-                                        </button>
-                                    </h2>
-                                    <div id="shippingInfo" class="accordion-collapse collapse" data-bs-parent="#shippingAccordion">
-                                        <div class="accordion-body p-3">
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label class="form-label">País</label>
-                                                    <select class="form-select">
-                                                        <option>México</option>
-                                                        <option>Estados Unidos</option>
-                                                        <option>España</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">Código Postal</label>
-                                                    <input type="text" class="form-control" placeholder="Ej. 28001">
-                                                </div>
-                                                <button type="button" class="btn btn-outline-primary w-100 shipping-btn">
-                                                    Calcular envío
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label class="form-label fw-bold"><i class="fas fa-edit me-2"></i>Notas adicionales</label>
-                                <textarea class="form-control note-textarea" placeholder="Instrucciones especiales, notas para el pedido..."></textarea>
-                            </div>
-                            
+                                        
                             <div class="alert alert-success mt-3">
                                 <i class="fas fa-check-circle me-2"></i>
                                 <strong>¡Envío gratis disponible!</strong> Aplica para pedidos superiores a $100.
