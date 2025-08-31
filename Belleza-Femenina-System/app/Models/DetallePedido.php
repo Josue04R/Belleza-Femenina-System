@@ -38,7 +38,7 @@ class DetallePedido extends Model
 
     public function variante()
     {
-        return $this->belongsTo(VarianteProducto::class, 'idVariante');
+        return $this->belongsTo(VarianteProducto::class, 'idVariante','idVariante');
     }
     
 }

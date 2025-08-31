@@ -28,7 +28,7 @@ class CarritoController extends Controller
     public function agregar(Request $request)
     {
         $request->validate([
-            'idVariante' => 'required|exists:variantesProdcuto,idVariante',
+            'idVariante' => 'required',
             'cantidad' => 'required|integer|min:1'
         ]);
 

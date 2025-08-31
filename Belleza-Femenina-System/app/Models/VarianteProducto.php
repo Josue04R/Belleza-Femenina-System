@@ -33,11 +33,11 @@ class VarianteProducto extends Model
 
     public function producto()
     {
-        return $this->belongsTo(Producto::class, 'idProducto');
+        return $this->belongsTo(Producto::class, 'idProducto','idProducto');
     }
 
     public function talla()
     {
-        return $this->belongsTo(Talla::class, 'idTalla');
+        return $this->belongsTo(Talla::class, 'idTalla','idTalla');
     }
 }

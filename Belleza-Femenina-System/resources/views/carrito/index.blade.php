@@ -63,12 +63,12 @@
                                         <input type="text" class="form-control text-center quantity-input" value="{{ $producto['cantidad'] }}">
                                         <button class="btn btn-outline-secondary" type="button">+</button>
                                     </div>
-                                    <form action="{{ route('producto.editar', $producto['id_variante']) }}" method="GET" style="display: inline;">
+                                    <form action="{{ route('producto.editar', $producto['idVariante']) }}" method="GET" style="display: inline;">
                                         <button class="btn btn-outline-primary btn-action" type="submit">
                                             <i class="fas fa-sync-alt me-1"></i>Actualizar
                                         </button>
                                     </form>
-                                    <form action="{{ route('carrito.eliminar', $producto['id_variante']) }}" method="POST" style="display:inline;">
+                                    <form action="{{ route('carrito.eliminar', $producto['idVariante']) }}" method="POST" style="display:inline;">
                                         @csrf
                                         <button class="btn btn-outline-danger btn-action" type="submit">
                                             <i class="fas fa-trash-alt me-1"></i>Eliminar

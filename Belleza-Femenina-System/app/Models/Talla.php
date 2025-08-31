@@ -22,7 +22,7 @@ class Talla extends Model
 
     public function variantes()
     {
-        return $this->hasMany(VarianteProducto::class, 'idTalla');
+        return $this->hasMany(VarianteProducto::class, 'idTalla','idTalla');
     }
     
 }
