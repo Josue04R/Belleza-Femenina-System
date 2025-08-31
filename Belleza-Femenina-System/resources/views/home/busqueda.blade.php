@@ -2,6 +2,7 @@
 
 @section('estilos_css')
     <link href="{{ asset('css/home/home.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url('/css/home/card.css')}}">
 @endsection
 
 @section('content')
