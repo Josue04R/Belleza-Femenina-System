@@ -24,20 +24,23 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\View\View Vista con resultados de búsqueda.
      */
+    
     public function busqueda(Request $request)
     {
-        $request->validate([
-            'query' => 'required|string|min:2'
-        ]);
-
         $query = $request->input('query');
 
-        $productos = Producto::where('nombre_p', 'ILIKE', "%{$query}%")
-            ->orWhere('descripcion', 'ILIKE', "%{$query}%")
-            ->get();
+        if (empty($query)) {
+            // Si no hay búsqueda, traer todos los productos
+            $productos = Producto::all();
+        } else {
+            $productos = Producto::where('nombreProducto', 'ILIKE', "%{$query}%")
+                ->orWhere('descripcion', 'ILIKE', "%{$query}%")
+                ->get();
+        }
 
         return view('home.busqueda', compact('productos', 'query'));
     }
+    
 
     /**
      * Muestra todos los productos disponibles en el sistema.
