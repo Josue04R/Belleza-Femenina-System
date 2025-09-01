@@ -16,5 +16,5 @@ commands = [
 
 [phases.start]
 commands = [
-    "php-fpm8 -F -R -y /etc/php/8.2/fpm/php-fpm.conf -O"
+    "php-fpm8 -F -R -y /etc/php/8.3/fpm/php-fpm.conf -O"
 ]
