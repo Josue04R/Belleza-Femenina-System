@@ -3,7 +3,7 @@
 @section('title', 'Finalizar Pedido')
 
 @section('estilos_css')
-<link rel="stylesheet" href="{{ url('css/checkout/checkout.css') }}">  
+<link rel="stylesheet" href="{{ asset('css/checkout/checkout.css') }}">  
 @endsection
 
 @section('content')

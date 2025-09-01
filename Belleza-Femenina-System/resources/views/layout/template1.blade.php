@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link href="{{ url('/css/layout/template1.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/layout/template1.css') }}" rel="stylesheet">
 
 
      @yield('estilos_css')

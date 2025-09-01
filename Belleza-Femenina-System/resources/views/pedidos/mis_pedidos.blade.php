@@ -1,7 +1,7 @@
 @extends('layout.template1')
 
 @section('estilos_css')
-<link rel="stylesheet" href="{{ url('/css/pedidos/pedidos.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/pedidos/pedidos.css') }}">
 @endsection
 
 @section('content')

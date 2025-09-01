@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/home/home.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{url('/css/home/card.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/home/card.css')}}">
 @endsection
 
 @section('content')

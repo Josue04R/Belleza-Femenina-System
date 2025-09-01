@@ -1,8 +1,8 @@
 @extends('layout.template1') 
 
 @section('estilos_css')
-    <link href="{{ asset('css/home/home.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{url('/css/home/card.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/home/home.css') }}" >
+    <link rel="stylesheet" href="{{asset('/css/home/card.css')}}">
 @endsection
 
 @section('content')

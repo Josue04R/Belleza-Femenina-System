@@ -3,7 +3,7 @@
 @section('title', $producto->nombreProducto . ' | Mi Tienda')
 
 @section('estilos_css')
-<link rel="stylesheet" href="{{ url('/css/producto/productoShow.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/producto/productoShow.css') }}">
 @endsection
 
 @section('content')

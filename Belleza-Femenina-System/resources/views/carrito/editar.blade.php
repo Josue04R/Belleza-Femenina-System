@@ -3,7 +3,7 @@
 @section('title', $variante->producto->nombre_p . ' | Editar Carrito')
 
 @section('estilos_css')
-    <link rel="stylesheet" href="{{ url('/css/carrito/carritoEditar.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/carrito/carritoEditar.css') }}">
 @endsection
 
 @section('content')

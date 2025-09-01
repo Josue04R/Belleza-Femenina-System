@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="{{ url('/css/carrito/carrito.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/carrito/carrito.css') }}">
 @endsection
 
 @section('content')
